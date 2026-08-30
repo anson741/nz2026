@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>紐西蘭南島 15 天露營車自駕動態導航指南與戰略分析</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Custom Chart Container Rules */
+    .chart-container {
+      position: relative;
+      width: 100%;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      height: 320px;
+      max-height: 380px;
+    }
+    @media (min-width: 768px) {
+      .chart-container {
+        height: 350px;
+      }
+    }
+    /* Custom Scrollbar for smooth experience */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans leading-relaxed min-h-screen flex flex-col">
+
+<!-- Chosen Palette: Warm Natural Explorer (Stone-50 background, Forest Emerald accents #0F5132/emerald-800, Warm Amber #D97706, Muted Slate #475569) -->
+
+<!-- Application Structure Plan: 
+  1. Top Hero Section: Title, summary stats badge bar, fast jump links.
+  2. Section 1 - Daily Interactive Itinerary Explorer: Core tool allowing filter by Day (1-15), Category (Flight, Drive, Hike, Activity, Food, Camp), and real-time Search. Displays exact time, transport, stay time, Google Maps direct link, food reco, and crowd tips.
+  3. Section 2 - Driving & Route Analytics: Chart.js visualizing daily distance (km) and activity distribution to manage driver fatigue.
+  4. Section 3 - Strategic Driving & Campervan Survival Guide: Interactive tabs covering Spring weather contingency, Mountain road dynamics (SH6 vs Crown Range, Lindis Pass), Power/Water/Dump management, and Fuel checkpoints.
+  5. Section 4 - Top Gourmet Highlights: Grid cards showcasing iconic South Island dining with links.
+  6. Section 5 - Pre-trip & Logistics Checklist: Interactive checklist with progress bar saved in local storage.
+  Rationale: Designed to decouple linear document reading into direct tactical tools for real-time driving navigation and daily execution.
+-->
+
+<!-- Visualization & Content Choices: 
+  - Daily Mileage: Chart.js Bar Chart -> Easy visual comparison of driving fatigue days.
+  - Activity Split: Chart.js Doughnut Chart -> Quick understanding of trip composition.
+  - Navigation/Map: HTML link buttons with standard Google Maps query parameters -> Fast one-click activation on phones.
+  - Tabs & Accordions: HTML/Tailwind + JS state management -> Clean mobile interface without overwhelming text.
+  - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+-->
+
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+  <!-- Top Announcement / Header -->
+  <header class="bg-emerald-900 text-stone-100 shadow-md border-b border-emerald-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <span class="text-2xl">🇳🇿</span>
+        <div>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white">紐西蘭南島 15 天露營車自駕動態導航指南</h1>
+          <p class="text-xs text-emerald-200 hidden sm:block">2026/10/17 - 10/31 順時針環島戰略計畫 × 一鍵 Google Maps 導航</p>
+        </div>
+      </div>
+      
+      <!-- Quick Navigation Tabs -->
+      <nav class="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm font-medium">
+        <a href="#itinerary-section" class="px-2.5 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white transition">🗓️ 每日行程</a>
+        <a href="#analytics-section" class="px-2.5 py-1.5 rounded-lg hover:bg-emerald-800 text-emerald-100 transition">📊 車程分析</a>
+        <a href="#strategy-section" class="px-2.5 py-1.5 rounded-lg hover:bg-emerald-800 text-emerald-100 transition">🛡️ 戰略指南</a>
+        <a href="#gourmet-section" class="px-2.5 py-1.5 rounded-lg hover:bg-emerald-800 text-emerald-100 transition">🍽️ 精選美食</a>
+        <a href="#checklist-section" class="px-2.5 py-1.5 rounded-lg hover:bg-emerald-800 text-emerald-100 transition">🎒 準備清單</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Overview & Metrics Summary -->
+  <section class="bg-gradient-to-b from-emerald-900 to-emerald-800 text-white py-8 px-4 sm:px-6 lg:px-8 shadow-inner">
+    <div class="max-w-7xl mx-auto">
+      <div class="md:flex md:items-center md:justify-between mb-6">
+        <div>
+          <span class="inline-block bg-amber-500 text-emerald-950 font-bold text-xs px-2.5 py-1 rounded-full mb-2">春季露營車自駕特輯</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">南島高山冰川湖泊深度探索</h2>
+          <p class="mt-2 text-sm sm:text-base text-emerald-100 max-w-3xl">
+            本指南已將 15 天環島行程全面數位化，包含精準時間規劃、點對點車程、建議停留時間、順路高評價美食，並隨附 100% Google Maps 一鍵導航與露營車水電防禦駕駛指南。
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-stone-800">
+        <div class="bg-stone-50/95 backdrop-blur p-3.5 rounded-xl border border-stone-200 shadow-sm flex items-center space-x-3">
+          <span class="text-2xl">📅</span>
+          <div>
+            <div class="text-xs text-stone-500 font-medium">旅行天數</div>
+            <div class="text-lg font-bold text-emerald-900">15 天 14 夜</div>
+          </div>
+        </div>
+        <div class="bg-stone-50/95 backdrop-blur p-3.5 rounded-xl border border-stone-200 shadow-sm flex items-center space-x-3">
+          <span class="text-2xl">🛣️</span>
+          <div>
+            <div class="text-xs text-stone-500 font-medium">總預估里程</div>
+            <div class="text-lg font-bold text-emerald-900">約 1,480 km</div>
+          </div>
+        </div>
+        <div class="bg-stone-50/95 backdrop-blur p-3.5 rounded-xl border border-stone-200 shadow-sm flex items-center space-x-3">
+          <span class="text-2xl">🚐</span>
+          <div>
+            <div class="text-xs text-stone-500 font-medium">自駕車型</div>
+            <div class="text-lg font-bold text-emerald-900">Maui 露營車</div>
+          </div>
+        </div>
+        <div class="bg-stone-50/95 backdrop-blur p-3.5 rounded-xl border border-stone-200 shadow-sm flex items-center space-x-3">
+          <span class="text-2xl">📍</span>
+          <div>
+            <div class="text-xs text-stone-500 font-medium">核心精華區域</div>
+            <div class="text-lg font-bold text-emerald-900">7 大主題園區</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+    <!-- SECTION 1: ITINERARY EXPLORER -->
+    <section id="itinerary-section" class="scroll-mt-20">
+      <div class="border-b border-stone-200 pb-4 mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold tracking-wider text-emerald-800 uppercase">Interactive Itinerary</span>
+          <h2 class="text-2xl font-bold text-stone-900 mt-0.5">每日詳細互動導航行程</h2>
+          <p class="text-sm text-stone-600 mt-1">
+            點擊天數按鈕切換觀看每日時間表，或使用分類標籤與搜尋框快速查找景點、美食與導航。
+          </p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="w-full md:w-72">
+          <div class="relative">
+            <input type="text" id="itinerarySearch" placeholder="🔍 搜尋景點、美食或關鍵字..." 
+                   class="w-full pl-9 pr-4 py-2 bg-white border border-stone-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-transparent">
+          </div>
+        </div>
+      </div>
+
+      <!-- Day Switcher Buttons -->
+      <div class="mb-4 overflow-x-auto pb-2 flex items-center space-x-2 scrollbar-thin" id="dayButtonsContainer">
+        <!-- JS generated Day buttons -->
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="mb-6 flex flex-wrap gap-2 text-xs font-medium text-stone-600">
+        <button onclick="filterCategory('ALL')" class="cat-btn active bg-emerald-800 text-white px-3 py-1.5 rounded-full transition">全部項目</button>
+        <button onclick="filterCategory('DRIVE')" class="cat-btn bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1.5 rounded-full transition">🚗 自駕車程</button>
+        <button onclick="filterCategory('HIKE')" class="cat-btn bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1.5 rounded-full transition">🥾 步道健行</button>
+        <button onclick="filterCategory('ACTIVITY')" class="cat-btn bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1.5 rounded-full transition">🪂 重頭戲活動</button>
+        <button onclick="filterCategory('FOOD')" class="cat-btn bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1.5 rounded-full transition">🍽️ 美食補給</button>
+        <button onclick="filterCategory('CAMP')" class="cat-btn bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1.5 rounded-full transition">⛺ 營地住宿</button>
+      </div>
+
+      <!-- Active Day Header Summary Card -->
+      <div id="daySummaryCard" class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-6 text-stone-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <!-- JS dynamically fills this -->
+      </div>
+
+      <!-- Schedule Table / Card List -->
+      <div class="bg-white border border-stone-200 rounded-xl shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="bg-stone-100 text-stone-700 font-semibold border-b border-stone-200">
+                <th class="py-3 px-4 w-32">時間</th>
+                <th class="py-3 px-4 min-w-[200px]">行程重點與活動內容</th>
+                <th class="py-3 px-4 w-44">交通與預估車程</th>
+                <th class="py-3 px-4 w-28">停留時間</th>
+                <th class="py-3 px-4 w-36">一鍵導航</th>
+                <th class="py-3 px-4 min-w-[180px]">順路高評價美食</th>
+                <th class="py-3 px-4 min-w-[240px]">實用導覽與避開人潮建議</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleTableBody" class="divide-y divide-stone-100">
+              <!-- JS rendered rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 2: ROUTE & MILEAGE ANALYTICS -->
+    <section id="analytics-section" class="scroll-mt-20">
+      <div class="border-b border-stone-200 pb-4 mb-6">
+        <span class="text-xs font-bold tracking-wider text-emerald-800 uppercase">Driving Analytics</span>
+        <h2 class="text-2xl font-bold text-stone-900 mt-0.5">車程與時間分配分析</h2>
+        <p class="text-sm text-stone-600 mt-1">
+          透過視覺化圖表協助您評估每日駕駛負荷，提早規劃接手駕駛與休息點，確保自駕安全。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Chart 1: Daily Driving Distance -->
+        <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <h3 class="text-base font-bold text-stone-800 mb-1">🚘 每日行駛公里數 (km)</h3>
+            <p class="text-xs text-stone-500 mb-4">高峰期集中於 Day 10 (蒂阿瑙)、Day 12 (但尼丁) 與 Day 14 (返程基督城)</p>
+          </div>
+          <div class="chart-container">
+            <canvas id="distanceChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 2: Trip Activity Composition -->
+        <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <h3 class="text-base font-bold text-stone-800 mb-1">🧗‍♂️ 全行程活動類型時間占比</h3>
+            <p class="text-xs text-stone-500 mb-4">結合高山健行、極限運動、冰川巡航與悠閒城鎮探索</p>
+          </div>
+          <div class="chart-container">
+            <canvas id="activityChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 3: STRATEGIC DRIVING & CAMPERVAN SURVIVAL GUIDE -->
+    <section id="strategy-section" class="scroll-mt-20">
+      <div class="border-b border-stone-200 pb-4 mb-6">
+        <span class="text-xs font-bold tracking-wider text-emerald-800 uppercase">Campervan Strategic Analysis</span>
+        <h2 class="text-2xl font-bold text-stone-900 mt-0.5">戰略路線綜合分析與深度洞察</h2>
+        <p class="text-sm text-stone-600 mt-1">
+          針對紐西蘭春季氣候、高重心露營車駕馭、水電能源循環及關鍵補給點進行深度解析。
+        </p>
+      </div>
+
+      <!-- Strategy Tabs Header -->
+      <div class="flex flex-wrap border-b border-stone-200 mb-6 gap-2" id="strategyTabHeaders">
+        <button onclick="switchStrategyTab('weather')" id="tab-weather" class="strat-tab text-sm font-semibold px-4 py-2.5 border-b-2 border-emerald-800 text-emerald-900 bg-emerald-50 rounded-t-lg transition">🌦️ 春季氣候與彈性備案</button>
+        <button onclick="switchStrategyTab('driving')" id="tab-driving" class="strat-tab text-sm font-semibold px-4 py-2.5 border-b-2 border-transparent text-stone-600 hover:text-stone-900 rounded-t-lg transition">🚐 露營車風險與地形駕駛</button>
+        <button onclick="switchStrategyTab('energy')" id="tab-energy" class="strat-tab text-sm font-semibold px-4 py-2.5 border-b-2 border-transparent text-stone-600 hover:text-stone-900 rounded-t-lg transition">⚡ 能源、水路與營地平衡</button>
+        <button onclick="switchStrategyTab('logistics')" id="tab-logistics" class="strat-tab text-sm font-semibold px-4 py-2.5 border-b-2 border-transparent text-stone-600 hover:text-stone-900 rounded-t-lg transition">⛽ 關鍵補給與歸還規章</button>
+      </div>
+
+      <!-- Strategy Tab Content Bodies -->
+      <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm text-sm leading-relaxed text-stone-700">
+        
+        <!-- Tab 1: Weather -->
+        <div id="strat-content-weather" class="strat-content space-y-4">
+          <h3 class="text-lg font-bold text-emerald-900">春季氣候動態與戶外活動的彈性緩衝機制</h3>
+          <p>
+            紐西蘭南島 10 月底正值春末夏初，氣候特徵為高山地區溫差極大且氣壓變化迅速。南阿爾卑斯山脈周邊如庫克山與瓦納卡的微氣候，常導致高空與冰川活動（如直升機冰川健行與高空跳傘）面臨臨場取消或延期的風險。
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+            <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+              <div class="font-bold text-stone-900 mb-1">🎯 跳傘晨間視窗 (Day 7 Skydive)</div>
+              <p class="text-xs text-stone-600">安排於 Day 7 晨間 08:30，精準利用了清晨大氣對流未起、風速最為平穩的黃金窗口期，並預留整個下午作為天候延誤的替代緩衝時間。</p>
+            </div>
+            <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+              <div class="font-bold text-stone-900 mb-1">🧊 塔斯曼冰川健行備案 (Day 6 Heli Hike)</div>
+              <p class="text-xs text-stone-600">若遭遇高空濃霧或降雨導致直升機無法起飛，行程備案能迅速轉化為走訪地面 Tasman Glacier View Track 步道，確保體驗不至連鎖崩塌。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Driving -->
+        <div id="strat-content-driving" class="strat-content hidden space-y-4">
+          <h3 class="text-lg font-bold text-emerald-900">露營車車載動態與地形駕駛風險管理</h3>
+          <p>
+            露營車具備高重心、大風阻與長軸距等物理特性，其駕駛行為與普通小型房車存在本質差異。從基督城出發後，駕駛者需在短時間內完成右駕轉左駕的強迫習慣切換。
+          </p>
+          <ul class="list-disc pl-5 space-y-2 text-stone-700">
+            <li><strong>避開皇冠山脈公路 (Crown Range Road)：</strong> Day 8 選擇沿 SH6 公路行經克倫威爾前往箭鎮與皇后鎮，避開坡度極陡、髮夾彎密布且受強側風影響的皇冠山脈公路，大幅降低大車轉彎失控或煞車過熱風險。</li>
+            <li><strong>高山隘口低檔位煞車 (Lindis Pass)：</strong> Day 6 翻越海拔近 1,000 公尺的 Lindis Pass 時，請務必善用低檔位引擎煞車（Engine Braking），避免長下坡頻繁死踩煞車導致煞車皮氣鎖失靈。</li>
+            <li><strong>碎石路段減速 (Moke Lake Gravel Road)：</strong> Day 10 進入 Moke Lake 前約 7 公里的碎石路，應降速至 30–40 km/h 並拉開車距，預防飛石擊碎車底水箱或擋風玻璃。</li>
+          </ul>
+        </div>
+
+        <!-- Tab 3: Energy -->
+        <div id="strat-content-energy" class="strat-content hidden space-y-4">
+          <h3 class="text-lg font-bold text-emerald-900">能源補給、營地類型平衡與資源循環系統</h3>
+          <p>
+            露營車自駕的核心運作基礎建立於「清水箱」、「灰/黑水箱」、「車載副電池 (House Battery)」與「瓦斯 (LPG)」四大循環系統之上。
+          </p>
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 text-xs text-amber-900 space-y-2">
+            <div class="font-bold text-sm text-amber-950">⚡ 帶電營地 (Powered) vs 自然營地 (DOC Unpowered) 的交替交響曲</div>
+            <p>Day 4 (Tekapo)、Day 6 (Wanaka)、Day 8-9 (Queenstown) 與 Day 10-11 (Te Anau TOP 10) 均安排於設施完善的 Holiday Parks，讓車輛能接上 230V 外接電源為車載大容量電池深度充電，同時補滿清水並排放黑灰水。</p>
+            <p>這種高頻率補給，完美支撐了 Day 5 入住無外接電源的 White Horse Hill DOC 營地，讓您在不犧牲車內照明與保暖的前提下，獨享庫克山深處無光害星空。</p>
+          </div>
+        </div>
+
+        <!-- Tab 4: Logistics -->
+        <div id="strat-content-logistics" class="strat-content hidden space-y-4">
+          <h3 class="text-lg font-bold text-emerald-900">關鍵補給站與歸還規章條款</h3>
+          <div class="space-y-3">
+            <div class="flex items-start space-x-3">
+              <span class="text-xl">⛽</span>
+              <div>
+                <div class="font-bold text-stone-900">蒂阿瑙 (Te Anau) 峽灣前最後補給線</div>
+                <div class="text-xs text-stone-600">Day 10 抵達蒂阿瑙時務必將油箱加滿！SH94 峽灣公路往返長達 240 公里，且峽灣國家公園內部無加油設施。滿油可確保極端情況下車內空調發動機運轉。</div>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <span class="text-xl">📋</span>
+              <div>
+                <div class="font-bold text-stone-900">Day 14 還車避坑守則</div>
+                <div class="text-xs text-stone-600">歸還露營車前，務必於基督城機場 BP 加油站完成柴油加滿 (Full Tank) 與瓦斯補充 (LPG Refill) 並保留發票。當晨於營地 Dump Station 清空黑水與灰水，避免高額代處理費。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION 4: GOURMET HIGHLIGHTS -->
+    <section id="gourmet-section" class="scroll-mt-20">
+      <div class="border-b border-stone-200 pb-4 mb-6">
+        <span class="text-xs font-bold tracking-wider text-emerald-800 uppercase">Must-Eat Culinary Guide</span>
+        <h2 class="text-2xl font-bold text-stone-900 mt-0.5">順路高評價地標美食推薦</h2>
+        <p class="text-sm text-stone-600 mt-1">
+          精選全行程最不容錯過的在地名店，從高山冰川鮭魚到世紀百年蒸汽船烤肉饗宴。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="gourmetGrid">
+        <!-- JS rendered gourmet cards -->
+      </div>
+    </section>
+
+
+    <!-- SECTION 5: PRE-TRIP CHECKLIST -->
+    <section id="checklist-section" class="scroll-mt-20">
+      <div class="border-b border-stone-200 pb-4 mb-6">
+        <span class="text-xs font-bold tracking-wider text-emerald-800 uppercase">Pre-Trip Checklist</span>
+        <h2 class="text-2xl font-bold text-stone-900 mt-0.5">出發前與營運準備 Check-List</h2>
+        <p class="text-sm text-stone-600 mt-1">
+          可勾選的實用互動清單，進度自動儲存於瀏覽器，助您無縫執行自駕行程。
+        </p>
+      </div>
+
+      <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm">
+        <!-- Progress Bar -->
+        <div class="mb-6">
+          <div class="flex justify-between items-center text-xs font-bold text-stone-700 mb-2">
+            <span>準備完成度</span>
+            <span id="checklistProgressText">0%</span>
+          </div>
+          <div class="w-full bg-stone-200 rounded-full h-3">
+            <div id="checklistProgressBar" class="bg-emerald-700 h-3 rounded-full transition-all duration-300 w-0"></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm" id="checklistItemsContainer">
+          <!-- JS generated check items -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-stone-900 text-stone-400 py-8 border-t border-stone-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p class="text-stone-300 font-semibold text-sm">紐西蘭南島 15 天露營車自駕動態導航指南與戰略分析</p>
+      <p>基督城 (CHC) 起終點 順時針環島戰略版 • Powered by Tailwind CSS & Chart.js</p>
+      <p class="text-stone-500">祝您擁有一次平安、順暢且震撼心靈的高山冰川湖泊探索之旅！</p>
+    </div>
+  </footer>
+
+
+  <!-- JS APPLICATION LOGIC -->
+  <script>
+    // --- 1. FULL ITINERARY DATA STRUCTURE ---
+    const ITINERARY_DATA = [
+      {
+        day: 1,
+        date: "2026/10/17 (六)",
+        title: "香港飛往墨爾本 (機上夜航)",
+        distKm: 0,
+        summary: "長途飛行前置作業，機上充足休息，適應時差與左駕預備。",
+        rows: [
+          { time: "16:30 - 17:00", activity: "抵達香港國際機場（HKG），辦理預先線上報到與行李托運。", transport: "專車/機場快線", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport", mapsLabel: "香港國際機場", food: "太興燒味 / 何洪記 (機場店)", foodUrl: "https://www.google.com/maps/search/?api=1&query=Tai+Hing+Hong+Kong+International+Airport", tips: "週末出境人潮較多，建議提早 3 小時抵達機場留足安檢時間。", cat: "FLIGHT" },
+          { time: "17:00 - 19:15", activity: "出境安檢與候機，於禁區內補給長途飛行用品。", transport: "步行移動 / 0 km", stay: "2.25 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hong+Kong+Airport+Terminal+1+Departures", mapsLabel: "香港機場 T1", food: "禁區內輕食咖啡館", foodUrl: "", tips: "過安檢後裝滿溫水，長途航線機艙乾燥宜多補充水分。", cat: "FLIGHT" },
+          { time: "19:25 - 20:05", activity: "登機（QF30 預計 20:05 起飛，飛往墨爾本 MEL）。", transport: "步行登機 / 0 km", stay: "40 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hong+Kong+Airport+Terminal+1", mapsLabel: "QF30 登機閘口", food: "機上餐點", foodUrl: "", tips: "上機後將時區調整為紐西蘭夏令時間（快香港 5 小時），提早入睡。", cat: "FLIGHT" },
+          { time: "20:05 - 機上", activity: "夜間飛行與機上休息（飛行時間約 9 小時 15 分鐘）。", transport: "飛航中 / 0 km", stay: "9.25 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+MEL", mapsLabel: "墨爾本機場 MEL", food: "機上宵夜與早餐", foodUrl: "", tips: "明日取車即需適應左駕，今晚務必充足睡眠嚴防疲勞駕駛。", cat: "FLIGHT" }
+        ]
+      },
+      {
+        day: 2,
+        date: "2026/10/18 (日)",
+        title: "抵達基督城 & 市中心散步休養",
+        distKm: 10,
+        summary: "順暢通關、搭車前往基督城市區入住，雅芳河畔散步適應時差。",
+        rows: [
+          { time: "08:20 - 12:15", activity: "墨爾本轉機（MEL），辦理過境手續並銜接 QF5563 航班。", transport: "轉機步行 / 0 km", stay: "3.9 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+Terminal+2", mapsLabel: "墨爾本轉機區", food: "St. Ali Coffee / Urban Providore", foodUrl: "https://www.google.com/maps/search/?api=1&query=St.+Ali+Melbourne+Airport", tips: "近 4 小時轉機時間充裕，可享用墨爾本精品咖啡並散步促進血液循環。", cat: "FLIGHT" },
+          { time: "12:15 - 17:25", activity: "墨爾本飛往基督城（QF5563，飛行約 3 小時 10 分鐘）。", transport: "飛航中 / 0 km", stay: "3.17 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+International+Airport", mapsLabel: "基督城國際機場", food: "機上餐點", foodUrl: "", tips: "機上須完成填寫紐西蘭入境卡，食品與戶外裝備務必申報。", cat: "FLIGHT" },
+          { time: "17:25 - 18:40", activity: "抵達基督城（CHC），完成海關與生物安全檢疫（Bio-security）。", transport: "步行通關 / 0 km", stay: "1.25 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Airport+Arrivals", mapsLabel: "基督城入境大廳", food: "機場便利店", foodUrl: "", tips: "攜帶登山鞋或食品請走 Declared 申報通道，坦白申報通關更快。", cat: "FLIGHT" },
+          { time: "18:40 - 19:10", activity: "搭車前往基督城市中心飯店 Check-in。", transport: "Uber/Taxi / 約 10 km (20分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Christchurch+Airport&destination=Christchurch+Central+City&travelmode=driving", mapsLabel: "機場至市區路線", food: "無", foodUrl: "", tips: "雙人攜帶大件行李推薦直接叫 Uber（約 $35–45 NZD），直達門口最省力。", cat: "DRIVE" },
+          { time: "19:30 - 21:00", activity: "雅芳河畔（Avon River）或 Regent Street 晚餐與夜間散步。", transport: "步行 / 0 km", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=New+Regent+Street+Christchurch", mapsLabel: "新攝政街", food: "Riverside Market / Rollickin Gelato", foodUrl: "https://www.google.com/maps/search/?api=1&query=Riverside+Market+Christchurch", tips: "晚餐後可至超市購買飲用水，隨後早點休息儲備體力。", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 3,
+        date: "2026/10/19 (一)",
+        title: "基督城經典花園市區巡禮 & 基督城空中纜車",
+        distKm: 0,
+        summary: "徒步探索花園城市、紙教堂與植物園，乘坐空中纜車俯瞰基督城景。",
+        rows: [
+          { time: "08:30 - 09:30", activity: "飯店周邊享用紐式早餐與晨間散步。", transport: "步行 / 0 km", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Avon+River+Christchurch", mapsLabel: "雅芳河畔步道", food: "C4 Coffee Co. / Unknown Chapter", foodUrl: "https://www.google.com/maps/search/?api=1&query=C4+Coffee+Christchurch", tips: "沿雅芳河畔散步至咖啡館，體驗在地精品咖啡文化。", cat: "FOOD" },
+          { time: "09:30 - 10:00", activity: "參觀紙教堂（Cardboard Cathedral）。", transport: "步行 / 約 800 m (10分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Cardboard+Cathedral+Christchurch", mapsLabel: "紙教堂", food: "周邊咖啡館", foodUrl: "", tips: "建議 09:30 開門前往，欣賞陽光透過彩繪玻璃照射在紙管上的光影。", cat: "ACTIVITY" },
+          { time: "10:00 - 10:30", activity: "遊覽新攝政街（New Regent Street）。", transport: "步行 / 約 700 m (10分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=New+Regent+Street+Christchurch", mapsLabel: "新攝政街", food: "Rollickin Gelato / Craft Embassy", foodUrl: "https://www.google.com/maps/search/?api=1&query=Rollickin+Gelato+New+Regent+Street", tips: "上午順光非常適合拍攝西班牙復古巴洛克建築與百年復古電車。", cat: "ACTIVITY" },
+          { time: "10:30 - 12:00", activity: "Riverside Market 享用午餐與逛街。", transport: "步行 / 約 800 m (10分)", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Riverside+Market+Christchurch", mapsLabel: "Riverside Market", food: "Bacon Bros Burgers / Dimitris Greek", foodUrl: "https://www.google.com/maps/search/?api=1&query=Bacon+Bros+Burgers+Riverside+Market", tips: "建議 11:30 抵達，可避開 12:00–13:00 當地上班族午餐尖峰。", cat: "FOOD" },
+          { time: "12:00 - 14:00", activity: "漫步基督城植物園（Botanic Gardens）與博物館外部。", transport: "步行 / 約 1 km (15分)", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Botanic+Gardens", mapsLabel: "基督城植物園", food: "Curator's House Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Curators+House+Cafe+Christchurch", tips: "10 月中旬正值春季，植物園內鬱金香與水岸綠地具極高觀賞價值。", cat: "HIKE" },
+          { time: "14:00 - 16:00", activity: "基督城空中纜車。", transport: "公車/Uber / 約 10 km (40分)", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Gondola", mapsLabel: "基督城空中纜車", food: "Red Rock Cafe at the Christchurch Gondola", foodUrl: "https://www.google.com/maps/search/?api=1&query=Red+Rock+Cafe+at+the+Christchurch+Gondola", tips: "若是多雲或大風，視野可能被遮蔽或停駛，建議挑選晴朗日子搭乘會更值得。", cat: "ACTIVITY" },
+          { time: "17:00 - 19:00", activity: "市區享用晚餐，早點休息儲備體力。", transport: "步行 / 0 km", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Central+City", mapsLabel: "基督城市中心", food: "Fiddlesticks / Twenty Seven Steps", foodUrl: "https://www.google.com/maps/search/?api=1&query=Fiddlesticks+Restaurant+Christchurch", tips: "明日即將開取露營車並長途自駕，建議今夜充分休息。", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 4,
+        date: "2026/10/20 (二)",
+        title: "取露營車、大採買 & 前往蒂卡波湖觀星",
+        distKm: 230,
+        summary: "Maui 門市取車整備，大採買後行駛至 Tekapo 湖畔營地，夜間觀星。",
+        rows: [
+          { time: "08:30 - 09:30", activity: "飯店退房，前往機場區租車門市。", transport: "Uber / 約 10 km (15分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Airport", mapsLabel: "基督城機場區", food: "飯店早餐", foodUrl: "", tips: "對極地生態有興趣者，取車前可順道走訪南極中心。", cat: "DRIVE" },
+          { time: "09:30 - 11:30", activity: "取車：Maui Rental Christchurch，辦理手續與車況檢查。", transport: "租車接駁車 / 0 km", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Maui+Motorhome+Rental+Christchurch", mapsLabel: "Maui Christchurch", food: "無", foodUrl: "", tips: "預先完成 Online Check-in，現場檢查清水箱、灰水閥與瓦斯配備。", cat: "DRIVE" },
+          { time: "11:30 - 13:00", activity: "食材與生鮮大採買：Woolworths Christchurch Airport。", transport: "露營車 / 約 2 km (4分)", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Woolworths+Christchurch+Airport", mapsLabel: "Woolworths Christchurch Airport", food: "超市現做麵包 / 熟雞", foodUrl: "", tips: "設有露營車專用大型車位，迴轉轉灣時由副駕於車外引導。", cat: "FOOD" },
+          { time: "13:00 - 15:30", activity: "沿 SH1 & SH79 駛往蒂卡波湖，途經 Geraldine。", transport: "露營車 / 約 225 km (2.6h)", stay: "2.5 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=PaknSAVE+Riccarton&destination=Lake+Tekapo&travelmode=driving", mapsLabel: "基督城至蒂卡波路線", food: "Barker's Foodstore / Verclause Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Barkers+Foodstore+Geraldine", tips: "SH79 彎道較多，若後方有小車跟隨請利用 Passing Lane 讓行。", cat: "DRIVE" },
+          { time: "15:30 - 16:30", activity: "走訪好牧羊人教堂（Church of the Good Shepherd）與湖畔遊樂場免費滑索。", transport: "露營車 / 約 5 km (5分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=5+Lakeside+Drive+Tekapo", mapsLabel: "湖畔遊樂場", food: "Kohan Japanese / Mackenzies Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Kohan+Japanese+Restaurant+Lake+Tekapo", tips: "14:00–16:00 為團客高峰，若人潮多可先繞至湖畔步道拍照。", cat: "ACTIVITY" },
+          { time: "16:30 - 17:30", activity: "入住 Lakes Edge Holiday Park，接電（Powered Site）與整備。", transport: "露營車 / 約 2 km (3分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Lakes+Edge+Holiday+Park+Lake+Tekapo", mapsLabel: "Lakes Edge 營地", food: "營地自煮", foodUrl: "", tips: "預訂 Lakefront Powered Site 可於車內直接欣賞蒂卡波湖夕陽。", cat: "CAMP" },
+          { time: "18:00 - 20:30", activity: "露營車自煮晚餐與休息。", transport: "靜止 / 0 km", stay: "2.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Lakes+Edge+Holiday+Park+Lake+Tekapo", mapsLabel: "Lakes Edge 營地", food: "露營車料理", foodUrl: "", tips: "10 月山區入夜氣溫可降至 5°C 以下，需準備厚外套與防寒裝備。", cat: "CAMP" },
+          { time: "21:30 - 23:00", activity: "夜間觀星：好牧羊人教堂旁欣賞暗空保護區銀河。", transport: "步行/自駕 / 約 2 km", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Church+of+the+Good+Shepherd+Lake+Tekapo", mapsLabel: "夜間觀星點", food: "Dark Sky Diner", foodUrl: "https://www.google.com/maps/search/?api=1&query=Dark+Sky+Diner+Lake+Tekapo", tips: "請勿開啟汽車大燈或強光手電筒，宜使用紅光手電筒維護環境。", cat: "ACTIVITY" }
+        ]
+      },
+      {
+        day: 5,
+        date: "2026/10/21 (三)",
+        title: "約翰山雙湖俯瞰 & 庫克山 Hooker Valley 健行",
+        distKm: 120,
+        summary: "登上約翰山頂品嚐高山咖啡，Lake Pukaki 吃冰川鮭魚，黃昏冰川健行。",
+        rows: [
+          { time: "08:30 - 09:30", activity: "拔營出發，開往約翰山天文台（Mount John Observatory）。", transport: "露營車 / 約 15 km (20分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mount+John+Observatory", mapsLabel: "約翰山天文台", food: "Astro Café", foodUrl: "https://www.google.com/maps/search/?api=1&query=Astro+Cafe+Mount+John", tips: "山頂私有道路收費（約 $8 NZD），露營車依標示停放大型車區。", cat: "DRIVE" },
+          { time: "09:30 - 11:00", activity: "Astro Café 享用咖啡，漫步頂峰環狀步道 360度俯瞰雙湖。", transport: "徒步 / 0 km", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Astro+Cafe+Mount+John", mapsLabel: "Astro Café", food: "Astro Café 特色咖啡與甜點", foodUrl: "https://www.google.com/maps/search/?api=1&query=Astro+Cafe+Mount+John", tips: "山頂風大體感溫度低，戶外觀景台下車前請穿防風保暖外套。", cat: "FOOD" },
+          { time: "11:00 - 12:15", activity: "沿 SH8 開往 Lake Pukaki 湖畔之 Mt Cook Alpine Salmon。", transport: "露營車 / 約 50 km (40分)", stay: "1.25 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mt+Cook+Alpine+Salmon+Lake+Pukaki", mapsLabel: "Mt Cook Salmon", food: "Mt Cook Alpine Salmon Shop", foodUrl: "https://www.google.com/maps/search/?api=1&query=Mt+Cook+Alpine+Salmon+Lake+Pukaki", tips: "專賣店位於 SH8 公路旁，設有寬暢的露營車專用停車場。", cat: "DRIVE" },
+          { time: "12:15 - 13:15", activity: "Lake Pukaki 湖畔野餐：現切高山冰川鮭魚生魚片午餐。", transport: "徒步 / 0 km", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Peters+Lookout+Lake+Pukaki", mapsLabel: "Peter's Lookout", food: "高山冰川鮭魚生魚片", foodUrl: "https://www.google.com/maps/search/?api=1&query=Mt+Cook+Alpine+Salmon+Lake+Pukaki", tips: "購買生魚片後向旁邊步道延伸 100 公尺，可獨享無人牛奶藍湖景。", cat: "FOOD" },
+          { time: "13:15 - 14:15", activity: "沿 SH80 景觀公路開入庫克山國家公園。", transport: "露營車 / 約 55 km (45分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Mt+Cook+Alpine+Salmon&destination=White+Horse+Hill+Campground&travelmode=driving", mapsLabel: "SH80 景觀公路", food: "無", foodUrl: "", tips: "SH80 沿線風景絕佳切勿邊開邊拍；拍照請完全駛入 Lay-by 停靠灣。", cat: "DRIVE" },
+          { time: "14:15 - 15:30", activity: "入住 White Horse Hill Campground，整備健行裝備。", transport: "露營車 / 約 5 km (5分)", stay: "1.25 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=White+Horse+Hill+Campground+Mount+Cook", mapsLabel: "White Horse Hill 營地", food: "營地自煮補給", foodUrl: "", tips: "此為 DOC 無插座營地（Unpowered），需預先線上預訂。", cat: "CAMP" },
+          { time: "15:30 - 19:00", activity: "重點健行：Hooker Valley Track（往返約 10 km，含 3 座吊橋）。", transport: "徒步 / 往返 10 km", stay: "3.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hooker+Valley+Track+Trailhead", mapsLabel: "Hooker Valley 起點", food: "自備高能量零食", foodUrl: "", tips: "15:30 出發能避開中午人潮，並於冰川湖畔欣賞夕陽灑庫克山南壁。", cat: "HIKE" },
+          { time: "19:00 - 20:30", activity: "返抵營地，於露營車內或 DOC 烹飪棟享用晚餐。", transport: "靜止 / 0 km", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=White+Horse+Hill+Campground+Mount+Cook", mapsLabel: "White Horse Hill 營地", food: "露營車自煮", foodUrl: "", tips: "春季山谷約 19:45–20:00 日落，入夜氣溫下降迅速，注意保暖。", cat: "CAMP" }
+        ]
+      },
+      {
+        day: 6,
+        date: "2026/10/22 (四)",
+        title: "塔斯曼直升機冰川健行 & 翻越景觀公路至瓦納卡",
+        distKm: 215,
+        summary: "直升機降落藍冰冰川健行，翻越 Lindis Pass 景觀公路前往瓦納卡。",
+        rows: [
+          { time: "07:30 - 08:15", activity: "拔營前往庫克山機場（Mt Cook Airport）。", transport: "露營車 / 約 10 km (15分)", stay: "45 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mount+Cook+Airport", mapsLabel: "庫克山機場", food: "營地簡易早餐", foodUrl: "", tips: "報到前請穿妥高山防風衣物、太陽眼鏡與厚襪子應對低溫。", cat: "DRIVE" },
+          { time: "08:15 - 11:30", activity: "重頭戲：Tasman Glacier Heli Hike（直升機飛躍與藍冰健行）。", transport: "直升機/冰上健行", stay: "3.25 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mount+Cook+Airport", mapsLabel: "Heli Hike 報到點", food: "無", foodUrl: "", tips: "飛行受天候影響極大；若天候取消可改走 Tasman Glacier View Track。", cat: "ACTIVITY" },
+          { time: "11:30 - 12:30", activity: "離開庫克山國家公園，南下至 Twizel 鎮區。", transport: "露營車 / 約 55 km (45分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Mount+Cook+Airport&destination=Twizel&travelmode=driving", mapsLabel: "庫克山至特威澤爾", food: "Poppies Cafe / Mint Folk & Co", foodUrl: "https://www.google.com/maps/search/?api=1&query=Poppies+Cafe+Twizel", tips: "途經 Twizel 時可於鎮上咖啡館購買紐式熱派（Pie）快捷午餐。", cat: "DRIVE" },
+          { time: "12:30 - 15:30", activity: "翻越 Lindis Pass 高山隘口景觀公路，直達瓦納卡。", transport: "露營車 / 約 150 km (2h)", stay: "3 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Twizel&destination=Wanaka&travelmode=driving", mapsLabel: "Lindis Pass 至瓦納卡", food: "Lindis Pass Lookout", foodUrl: "https://www.google.com/maps/search/?api=1&query=Lindis+Pass+Viewpoint", tips: "Lindis Pass 最高點海拔近 1,000 米，連續彎道請善用低檔位引擎煞車。", cat: "DRIVE" },
+          { time: "15:30 - 16:30", activity: "Check-in Hampshire Holiday Parks - Wanaka，接電補給。", transport: "露營車 / 約 5 km (10分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hampshire+Holiday+Parks+Wanaka", mapsLabel: "Hampshire Wanaka", food: "營地補給", foodUrl: "", tips: "該營地離鎮中心與湖畔只需步行 10 分鐘，便利性極高。", cat: "CAMP" },
+          { time: "16:30 - 18:30", activity: "湖畔散步與打卡 That Wanaka Tree（瓦納卡孤獨樹）。", transport: "步行/自駕 / 約 2 km", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=That+Wanaka+Tree", mapsLabel: "瓦納卡孤獨樹", food: "Pembroke Patisserie / Patagonia", foodUrl: "https://www.google.com/maps/search/?api=1&query=Patagonia+Chocolates+Wanaka", tips: "傍晚 17:30–18:30 日光照射在孤獨樹與雪山上為黃金拍攝時段。", cat: "ACTIVITY" },
+          { time: "18:30 - 20:30", activity: "瓦納卡鎮上晚餐與 New World Three Parks 超市補給。", transport: "步行/自駕 / 5分鐘", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=New+World+Three+Parks+Wanaka", mapsLabel: "New World Wanaka", food: "Francesca's Italian / Big Fig", foodUrl: "https://www.google.com/maps/search/?api=1&query=Francesca%27s+Italian+Kitchen+Wanaka", tips: "瓦納卡氛圍放鬆，吃完晚餐後可在湖畔小酌觀賞落日。", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 7,
+        date: "2026/10/23 (五)",
+        title: "瓦納卡 15,000 呎極限跳傘 & 環景步道健行",
+        distKm: 25,
+        summary: "高空自由落體俯瞰雙湖壯麗景色，午後接續環景步道健行。",
+        rows: [
+          { time: "08:00 - 08:30", activity: "前往 Skydive Wanaka 基地（位於 Wanaka Airport）。", transport: "露營車 / 約 10 km (12分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Skydive+Wanaka", mapsLabel: "Skydive Wanaka", food: "營地早餐", foodUrl: "", tips: "請穿著舒適運動服與綁繫式運動鞋；店家會提供連身跳傘服。", cat: "DRIVE" },
+          { time: "08:30 - 11:30", activity: "重頭戲：Skydive Wanaka 15,000 呎高空跳傘（60 秒自由落體）。", transport: "高空跳傘 / 0 km", stay: "3 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Skydive+Wanaka", mapsLabel: "Skydive Wanaka", food: "無", foodUrl: "", tips: "預約 08:30 早班氣流最穩定、能見度高，且留給下午充裕備案時間。", cat: "ACTIVITY" },
+          { time: "11:30 - 13:00", activity: "返回瓦納卡鎮上享用慶功午餐。", transport: "露營車 / 約 10 km (12分)", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Wanaka+Town+Centre", mapsLabel: "瓦納卡鎮中心", food: "Kai Whakapai / Big Fig Wanaka", foodUrl: "https://www.google.com/maps/search/?api=1&query=Big+Fig+Wanaka", tips: "跳傘後腎上腺素消退易疲倦，享用大份量原型食物並補充水分。", cat: "FOOD" },
+          { time: "13:00 - 16:00", activity: "環景步道健行（Mount Iron Track 或 Diamond Lake Track）。", transport: "露營車 / 約 5-18 km", stay: "3 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mount+Iron+Track+Wanaka", mapsLabel: "Mount Iron 起點", food: "自備水與零食", foodUrl: "", tips: "Mount Iron 來回約 1.5 小時；Diamond Lake 來回約 2.5 小時具層次感。", cat: "HIKE" },
+          { time: "16:30 - 18:30", activity: "返抵 Holiday Park 休息、盥洗或湖畔漫步。", transport: "露營車 / 約 5 km (10分)", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hampshire+Holiday+Parks+Wanaka", mapsLabel: "Hampshire Wanaka", food: "營地下午茶", foodUrl: "", tips: "連續戶外活動後，下午為良好的喘息點，可善用營地整理衣物。", cat: "CAMP" },
+          { time: "18:30 - 20:30", activity: "瓦納卡鎮上景觀晚餐。", transport: "步行/5分鐘車程", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Wanaka+Town+Centre", mapsLabel: "瓦納卡鎮中心", food: "Francesca's Italian / Bistro Gentil", foodUrl: "https://www.google.com/maps/search/?api=1&query=Francesca%27s+Italian+Kitchen+Wanaka", tips: "Francesca's 柴燒披薩極受歡迎，強烈建議提早線上訂位。", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 8,
+        date: "2026/10/24 (六)",
+        title: "水果鎮採買、箭鎮淘金古蹟 & 皇后鎮 Skyline Luge",
+        distKm: 120,
+        summary: "避開陡峭山路走平緩 SH6，經克倫威爾與箭鎮抵達皇后鎮玩 Luge。",
+        rows: [
+          { time: "08:30 - 09:30", activity: "拔營出發，沿 SH6 景觀公路駛向 Cromwell。", transport: "露營車 / 約 55 km (45分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Wanaka&destination=Cromwell&travelmode=driving", mapsLabel: "瓦納卡至克倫威爾", food: "無", foodUrl: "", tips: "SH6 路面平坦寬廣，避開陡峭的 Crown Range Road，極適合露營車。", cat: "DRIVE" },
+          { time: "09:30 - 10:30", activity: "Cromwell 水果地標打卡 & Jones Family Orchard 採買。", transport: "露營車 / 約 5 km (5分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Jones+Family+Orchard+Cromwell", mapsLabel: "Jones Family Orchard", food: "現做水果冰淇淋", foodUrl: "https://www.google.com/maps/search/?api=1&query=Jones+Family+Orchard+Cromwell", tips: "果園設有廣大專用停車場，可購買乾果與現做水果冰淇淋。", cat: "FOOD" },
+          { time: "10:30 - 11:30", activity: "穿過卡瓦勞峽谷（Kawarau Gorge）開往箭鎮。", transport: "露營車 / 約 45 km (40分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Cromwell&destination=Arrowtown&travelmode=driving", mapsLabel: "克倫威爾至箭鎮", food: "Kawarau Bridge Bungy", foodUrl: "https://www.google.com/maps/search/?api=1&query=Kawarau+Bridge+Bungy", tips: "途經卡瓦勞大橋（高空彈跳發源地）可短暫停靠參觀，設大型車位。", cat: "DRIVE" },
+          { time: "11:30 - 13:30", activity: "箭鎮（Arrowtown）Buckingham St 漫步與淘金遺跡巡禮。", transport: "露營車 / 約 10 km (12分)", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Buckingham+Street+Arrowtown", mapsLabel: "箭鎮 Buckingham St", food: "Arrowtown Bakery / Provisions", foodUrl: "https://www.google.com/maps/search/?api=1&query=Arrowtown+Bakery", tips: "週六人潮多，露營車建議停於 Ramshaw Lane 公有大型車停車區。", cat: "ACTIVITY" },
+          { time: "13:30 - 14:00", activity: "駛入皇后鎮市區。", transport: "露營車 / 約 20 km (25分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Arrowtown&destination=Queenstown&travelmode=driving", mapsLabel: "箭鎮至皇后鎮", food: "無", foodUrl: "", tips: "皇后鎮週末車流量大，進入市區請嚴格遵守速限並注意行人。", cat: "DRIVE" },
+          { time: "14:00 - 15:00", activity: "Check-in Hampshire Holiday Parks - Queenstown。", transport: "露營車 / 約 2 km (5分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hampshire+Holiday+Parks+Queenstown", mapsLabel: "Hampshire Queenstown", food: "營地整備", foodUrl: "", tips: "營地離 Skyline 纜車站步行 5 分鐘，入住後不需在市區找車位。", cat: "CAMP" },
+          { time: "15:00 - 18:00", activity: "重頭戲：Skyline Queenstown 纜車 & Skyline Luge 滑車。", transport: "步行往返 / 0 km", stay: "3 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Skyline+Queenstown", mapsLabel: "Skyline Queenstown", food: "Stratosfare Restaurant", foodUrl: "https://www.google.com/maps/search/?api=1&query=Stratosfare+Restaurant+Queenstown", tips: "15:00 登頂避開中午纜車人潮；玩完 Luge 剛好在觀景台賞傍晚光影。", cat: "ACTIVITY" },
+          { time: "18:00 - 20:30", activity: "皇后鎮湖畔散步與知名晚餐。", transport: "步行往返 / 0 km", stay: "2.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Queenstown+Waterfront", mapsLabel: "皇后鎮湖畔碼頭", food: "Fergburger / Flame Bar & Grill", foodUrl: "https://www.google.com/maps/search/?api=1&query=Fergburger+Queenstown", tips: "Fergburger 建議線上預訂或 20:00 後再去現場，省去 30 分鐘排隊。", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 9,
+        date: "2026/10/25 (日)",
+        title: "Kawarau Bridge 高空彈跳 & 百年蒸汽船高原牧場晚宴",
+        distKm: 0,
+        summary: "朝聖世界高空彈跳發源地，傍晚搭蒸汽船至 Walter Peak 享用 BBQ 晚宴。",
+        rows: [
+          { time: "09:30 - 10:00", activity: "步行至 Shotover St 的 AJ Hackett Station 集合點。", transport: "步行 / 約 800 m (10分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=AJ+Hackett+Bungy+Queenstown", mapsLabel: "AJ Hackett Station", food: "Vudu Cafe & Larder", foodUrl: "https://www.google.com/maps/search/?api=1&query=Vudu+Cafe+%26+Larder+Queenstown", tips: "搭乘營運方專車前往 Kawarau Bridge（若有露營車也可選擇自行開車前往，車程約25分鐘）。", cat: "ACTIVITY" },
+          { time: "10:00 - 13:00", activity: "重頭戲：Kawarau Bridge Bungy（卡瓦勞大橋高空彈跳，43 米，世界高空彈跳發源地）。", transport: "營運方專車接送往返", stay: "3 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Kawarau+Bungy+Centre", mapsLabel: "Kawarau Bungy 基地", food: "無", foodUrl: "", tips: "卡瓦勞大橋為唯一可選擇「碰水 (Water touch)」的彈跳點；跳完後可購買官方照片與影片記錄。", cat: "ACTIVITY" },
+          { time: "13:00 - 14:30", activity: "返回皇后鎮市區享用輕午餐與逛街。", transport: "步行往返 / 0 km", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Queenstown+Mall", mapsLabel: "皇后鎮市中心", food: "Bespoke Kitchen / Patagonia", foodUrl: "https://www.google.com/maps/search/?api=1&query=Patagonia+Chocolates+Queenstown", tips: "因 17:00 即將享用豐富 BBQ 晚宴，午餐建議簡單享用輕食。", cat: "FOOD" },
+          { time: "14:30 - 16:30", activity: "返回 Holiday Park 休息與休養體力。", transport: "步行 / 約 800 m (10分)", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hampshire+Holiday+Parks+Queenstown", mapsLabel: "Hampshire Queenstown", food: "營地休息", foodUrl: "", tips: "極限高空彈跳會消耗許多腎上腺素，安排 1.5–2 小時放鬆極為關鍵。", cat: "CAMP" },
+          { time: "16:30 - 17:00", activity: "前往 Steamer Wharf 碼頭換票報到。", transport: "步行 / 約 800 m (10分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Steamer+Wharf+Queenstown", mapsLabel: "Steamer Wharf 碼頭", food: "碼頭酒吧", foodUrl: "", tips: "建議 16:30 前抵達碼頭，可搶先登船選擇甲板最佳視野座位。", cat: "ACTIVITY" },
+          { time: "17:00 - 21:00", activity: "重頭戲：TSS Earnslaw 蒸汽船巡航 & Walter Peak 烤肉晚宴。", transport: "蒸汽船往返 (單程45分)", stay: "4 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Walter+Peak+High+Country+Farm", mapsLabel: "Walter Peak 牧場", food: "Walter Peak Gourmet BBQ", foodUrl: "https://www.google.com/maps/search/?api=1&query=Walter+Peak+High+Country+Farm", tips: "甲板湖風大需帶防風外套；回程航行（20:00–21:00）剛好賞落日晚霞。", cat: "FOOD" },
+          { time: "21:00 - 21:30", activity: "返抵碼頭，散步返回營地。", transport: "步行 / 約 800 m (10分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hampshire+Holiday+Parks+Queenstown", mapsLabel: "Hampshire Queenstown", food: "無", foodUrl: "", tips: "夜間皇后鎮湖畔治安良好且氣氛浪漫，可順道欣賞夜景。", cat: "CAMP" }
+        ]
+      },
+      {
+        day: 10,
+        date: "2026/10/26 (一)",
+        title: "Moke Lake 秘境步道、格萊諾基紅小屋 & 前往蒂阿瑙",
+        distKm: 220,
+        summary: "探訪馬蹄形湖泊 Moke Lake，行經魔戒小鎮格萊諾基，開往蒂阿瑙。",
+        rows: [
+          { time: "08:30 - 09:00", activity: "拔營出發，沿 Closeburn Rd 開往 Moke Lake。", transport: "露營車 / 約 15 km (25分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Moke+Lake", mapsLabel: "Moke Lake", food: "營地早餐", foodUrl: "", tips: "最後 7 公里為未鋪設水泥碎石路，請降速至 30–40 km/h。", cat: "DRIVE" },
+          { time: "09:00 - 11:30", activity: "秘境健行：Moke Lake Secret Track（俯瞰馬蹄灣倒影）。", transport: "徒步 / 0 km", stay: "2.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Moke+Lake+Loop+Track", mapsLabel: "Moke Lake 步道", food: "自備高能量零食", foodUrl: "", tips: "09:00 抵達時湖面無風能拍出雪山倒影；脊線較陡穿抓地力佳鞋款。", cat: "HIKE" },
+          { time: "11:30 - 12:15", activity: "駛上 Glenorchy-Queenstown Road 前往 Glenorchy。", transport: "露營車 / 約 35 km (40分)", stay: "45 分鐘", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Moke+Lake&destination=Glenorchy&travelmode=driving", mapsLabel: "莫克湖至格萊諾基", food: "Bennetts Bluff Lookout", foodUrl: "https://www.google.com/maps/search/?api=1&query=Bennetts+Bluff+Lookout", tips: "途經 Bennetts Bluff Lookout 可短暫停靠拍照，設露營車停車位。", cat: "DRIVE" },
+          { time: "12:15 - 14:00", activity: "Glenorchy Waterfront 打卡紅小屋、潟湖步道與午餐。", transport: "露營車 / 約 2 km (5分)", stay: "1.75 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Glenorchy+Shed", mapsLabel: "Glenorchy Shed 紅小屋", food: "Mrs Woolly's / Bold Peak Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Mrs+Woollys+General+Store+Glenorchy", tips: "可利用露營車食材，在紅小屋旁的湖畔草地上進行湖畔野餐。", cat: "FOOD" },
+          { time: "14:00 - 16:15", activity: "沿 SH6 與 SH94 駛向蒂阿瑙，途經 Five Rivers。", transport: "露營車 / 約 170 km (2.25h)", stay: "2.25 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Glenorchy&destination=Te+Anau&travelmode=driving", mapsLabel: "格萊諾基至蒂阿瑙", food: "Five Rivers Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Five+Rivers+Cafe+Southland", tips: "Five Rivers Cafe 是公路極佳歇腳點，可在此喝咖啡休息。", cat: "DRIVE" },
+          { time: "16:15 - 17:30", activity: "抵達蒂阿瑙，Lake Te Anau 湖畔漫步觀賞落日。", transport: "露營車 / 約 5 km (10分)", stay: "1.25 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Lake+Te+Anau+Waterfront", mapsLabel: "蒂阿瑙湖畔步道", food: "Sandfly Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Sandfly+Cafe+Te+Anau", tips: "傍晚 17:00–18:00 湖畔光影極柔和，為漫步湖畔最佳時段。", cat: "ACTIVITY" },
+          { time: "17:30 - 18:30", activity: "Check-in Te Anau TOP 10 / Lakeview Holiday Park。", transport: "露營車 / 約 2 km (5分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Te+Anau+TOP+10+Holiday+Park", mapsLabel: "Te Anau TOP 10 營地", food: "鎮上加油站 / 超市", foodUrl: "", tips: "蒂阿瑙是峽灣前最後大站，今晚務必加滿油（峽灣內無加油站）！", cat: "CAMP" },
+          { time: "18:30 - 20:30", activity: "蒂阿瑙鎮上享用在地特色晚餐。", transport: "步行/5分鐘車程", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Te+Anau+Town+Centre", mapsLabel: "蒂阿瑙鎮中心", food: "Miles Better Pies / Redcliff Bar", foodUrl: "https://www.google.com/maps/search/?api=1&query=Miles+Better+Pies+Te+Anau", tips: "Miles Better Pies 鹿肉派極具盛名；明日前往峽灣請提早休息。", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 11,
+        date: "2026/10/27 (二)",
+        title: "米爾福德峽灣壯麗巡航 & 蒂阿瑙藍光螢火蟲洞",
+        distKm: 240,
+        summary: "走訪 SH94 景觀公路，巡航米爾福德峽灣，夜間探訪藍光螢火蟲洞。",
+        rows: [
+          { time: "07:00 - 08:00", activity: "早起出發，沿 SH94 Milford Road 開往峽灣。", transport: "露營車 / 約 120 km (2h)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Te+Anau&destination=Milford+Sound&travelmode=driving", mapsLabel: "蒂阿瑙至米爾福德峽灣", food: "營地自備早餐", foodUrl: "", tips: "Homer Tunnel 單向管制，露營車車速較慢建議預留 2.5 小時。", cat: "DRIVE" },
+          { time: "08:00 - 10:30", activity: "公路沿線精華停靠：Mirror Lakes, Eglinton Valley, Monkey Creek。", transport: "露營車沿途停靠", stay: "2.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mirror+Lakes+Milford+Road", mapsLabel: "鏡湖 Mirror Lakes", food: "自備高能量熱飲", foodUrl: "", tips: "清晨 08:00–09:30 鏡湖無風最能拍出倒影，避開皇后鎮巴士團客。", cat: "ACTIVITY" },
+          { time: "10:30 - 11:00", activity: "穿越 1.2 公里 Homer Tunnel 抵達 Milford Sound 遊客中心。", transport: "露營車 / 約 20 km (30分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Milford+Sound+Car+Park", mapsLabel: "Milford 露營車停車場", food: "無", foodUrl: "", tips: "請停放於 Deep Water Basin 露營車專用區，再步行 10 分鐘至碼頭。", cat: "DRIVE" },
+          { time: "11:30 - 13:30", activity: "重頭戲：Milford Sound Cruise（峽灣觀光遊船巡航）。", transport: "觀光遊船巡航 / 0 km", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Milford+Sound+Visitor+Terminal", mapsLabel: "Milford 碼頭航廈", food: "Discover Milford Cafe / 船上簡餐", foodUrl: "https://www.google.com/maps/search/?api=1&query=Discover+Milford+Sound+Cafe", tips: "遊船會開至 Stirling Falls 瀑布下方「瀑布灌頂」，請穿防水外套。", cat: "ACTIVITY" },
+          { time: "13:30 - 14:30", activity: "Foreshore Walk 岸邊散步，欣賞 Mitre Peak 經典視角。", transport: "徒步 / 0 km", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Milford+Sound+Foreshore+Walk", mapsLabel: "Foreshore Walk", food: "露營車自備午餐", foodUrl: "", tips: "岸邊木棧道是拍攝教皇峰（Mitre Peak）與倒影的最佳地點。", cat: "HIKE" },
+          { time: "14:30 - 17:00", activity: "沿 SH94 輕鬆返程開回蒂阿瑙。", transport: "露營車 / 約 120 km (2h)", stay: "2.5 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Milford+Sound&destination=Te+Anau&travelmode=driving", mapsLabel: "峽灣至蒂阿瑙返程", food: "The Fat Duck (Te Anau)", foodUrl: "https://www.google.com/maps/search/?api=1&query=The+Fat+Duck+Te+Anau", tips: "下午回程車流少，駕駛可順應節奏行駛，隨時利用 Lay-by 讓後車過。", cat: "DRIVE" },
+          { time: "17:00 - 18:30", activity: "返抵蒂阿瑙營地休息與晚餐。", transport: "靜止 / 0 km", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Te+Anau+TOP+10+Holiday+Park", mapsLabel: "Te Anau TOP 10 營地", food: "營地自煮 / 鎮上餐館", foodUrl: "", tips: "提早享用晚餐，為晚間藍光螢火蟲洞生態探索補充體力。", cat: "CAMP" },
+          { time: "18:45 - 21:15", activity: "重頭戲：Te Anau Glowworm Caves 藍光螢火蟲洞體驗。", transport: "RealNZ 觀光船橫渡", stay: "2.25 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=RealNZ+Te+Anau+Visitor+Centre", mapsLabel: "RealNZ 蒂阿瑙中心", food: "無", foodUrl: "", tips: "洞穴內嚴禁攝影與光源；洞內滴水且氣溫較低，請備妥保暖帽與外套。", cat: "ACTIVITY" }
+        ]
+      },
+      {
+        day: 12,
+        date: "2026/10/28 (三)",
+        title: "跨越南島橫貫公路 & 參觀蘇格蘭之都 Dunedin",
+        distKm: 290,
+        summary: "橫跨南部平原開往具濃郁蘇格蘭風情的但尼丁，走訪古蹟與隧道海灘。",
+        rows: [
+          { time: "08:30 - 12:00", activity: "蒂阿瑙出發，沿 SH94 轉 SH1 公路開往 Dunedin。", transport: "露營車 / 約 290 km (3.5h)", stay: "3.5 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Te+Anau&destination=Dunedin&travelmode=driving", mapsLabel: "蒂阿瑙至但尼丁", food: "The Black Dog Kitchen (Gore)", foodUrl: "https://www.google.com/maps/search/?api=1&query=The+Black+Dog+Kitchen+Gore", tips: "這段路線平坦但距離長，建議每 1.5 小時於 Gore 或 Balclutha 休息。", cat: "DRIVE" },
+          { time: "12:00 - 13:00", activity: "抵達 Dunedin 市中心八角廣場（The Octagon）與午餐。", transport: "露營車 / 約 5 km (10分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=The+Octagon+Dunedin", mapsLabel: "八角廣場 The Octagon", food: "Good Good Burgers / Prohibition", foodUrl: "https://www.google.com/maps/search/?api=1&query=Good+Good+Dunedin", tips: "露營車請停靠於火車站後方 Anzac Avenue 專用大型車收費停車場。", cat: "FOOD" },
+          { time: "13:00 - 15:00", activity: "古蹟巡禮：Dunedin 火車站、奧塔哥大學鐘樓與 Baldwin St。", transport: "市區短途移動", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dunedin+Railway+Station", mapsLabel: "但尼丁火車站", food: "The Perc Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=The+Perc+Cafe+Dunedin", tips: "挑戰世界最陡斜坡 Baldwin St 時請停於坡底，切勿開車上坡。", cat: "ACTIVITY" },
+          { time: "15:30 - 17:30", activity: "走訪 Tunnel Beach（隧道海灘步道與峭壁）。", transport: "露營車 / 約 10 km (15分)", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Tunnel+Beach+Track", mapsLabel: "Tunnel Beach Trailhead", food: "Starfish Cafe & Bar (St Clair)", foodUrl: "https://www.google.com/maps/search/?api=1&query=Starfish+Cafe+St+Clair", tips: "步道往返約 1 小時且回程為陡坡；確認退潮時間前往，強風勿近崖邊。", cat: "HIKE" },
+          { time: "17:30 - 18:30", activity: "入住 Dunedin Holiday Park 或周邊營地休息。", transport: "露營車 / 約 8 km (15分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dunedin+Holiday+Park", mapsLabel: "Dunedin Holiday Park", food: "Plato Restaurant / Tītī Restaurant", foodUrl: "https://www.google.com/maps/search/?api=1&query=Plato+Dunedin", tips: "晚間可至 St Clair 海灘邊的 Waterfront 餐廳享用海鮮晚餐。", cat: "CAMP" }
+        ]
+      },
+      {
+        day: 13,
+        date: "2026/10/29 (四)",
+        title: "摩拉基神奇大圓石、奧瑪魯維多利亞城區 & 藍企鵝歸巢",
+        distKm: 125,
+        summary: "觀賞摩拉基大圓石，品嚐黑邊鮑魚，遊覽奧瑪魯維多利亞城區與小藍企鵝。",
+        rows: [
+          { time: "08:30 - 09:30", activity: "拔營出發，沿 SH1 東海岸公路北上。", transport: "露營車 / 約 75 km (1h)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Dunedin&destination=Moeraki+Boulders&travelmode=driving", mapsLabel: "但尼丁至摩拉基大圓石", food: "無", foodUrl: "", tips: "SH1 沿途有海岸彎道，露營車請保持穩定車速，拍照善用 Lay-by。", cat: "DRIVE" },
+          { time: "09:30 - 11:30", activity: "走訪 Moeraki Boulders（摩拉基大圓石海灘）。", transport: "露營車 / 約 5 km (5分)", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Moeraki+Boulders", mapsLabel: "摩拉基大圓石", food: "Moeraki Boulders Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Moeraki+Boulders+Cafe", tips: "退潮前後 2 小時為最佳拍攝時機；車停 Cafe 停車場步行 5 分鐘。", cat: "ACTIVITY" },
+          { time: "11:30 - 12:30", activity: "午餐：Fleur's Place 或 Moeraki Boulders Cafe。", transport: "露營車 / 約 5 km (10分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Fleurs+Place+Moeraki", mapsLabel: "Fleur's Place", food: "Fleur's Place 新鮮黑邊鮑魚", foodUrl: "https://www.google.com/maps/search/?api=1&query=Fleurs+Place+Moeraki", tips: "Fleur's Place 位於漁港邊極受好評（建議預約），品嚐當日海鮮。", cat: "FOOD" },
+          { time: "12:30 - 13:30", activity: "沿 SH1 北上開往奧瑪魯（Oamaru）。", transport: "露營車 / 約 40 km (35分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Moeraki+Boulders&destination=Oamaru&travelmode=driving", mapsLabel: "摩拉基至奧瑪魯", food: "無", foodUrl: "", tips: "抵達後先至 Oamaru TOP 10 營地停妥辦理入住，再輕鬆徒步逛鎮區。", cat: "DRIVE" },
+          { time: "13:30 - 16:30", activity: "遊覽 Victorian Precinct（維多利亞歷史城區）與 Steampunk HQ。", transport: "鎮內步行", stay: "3 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Victorian+Precinct+Oamaru", mapsLabel: "奧瑪魯維多利亞城區", food: "Cucina Oamaru / Scotts Brewing Co.", foodUrl: "https://www.google.com/maps/search/?api=1&query=Cucina+Oamaru", tips: "全紐西蘭保存最完整的白石建築群；午後光線照耀極具質感。", cat: "ACTIVITY" },
+          { time: "16:30 - 18:30", activity: "入住 Oamaru TOP 10 Holiday Park，晚餐與防寒準備。", transport: "露營車 / 約 2 km (5分)", stay: "2 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Oamaru+TOP+10+Holiday+Park", mapsLabel: "Oamaru TOP 10 營地", food: "Fat Sally's Pub", foodUrl: "https://www.google.com/maps/search/?api=1&query=Fat+Sallys+Pub+Oamaru", tips: "觀賞企鵝需長時間坐在戶外海邊，傍晚一定要吃飽並穿足羽絨外套。", cat: "CAMP" },
+          { time: "18:30 - 21:00", activity: "重頭戲：Oamaru Blue Penguin Colony 觀賞小藍企鵝歸巢。", transport: "露營車 / 約 3 km (8分)", stay: "2.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Oamaru+Blue+Penguin+Colony", mapsLabel: "奧瑪魯藍企鵝保護區", food: "無", foodUrl: "", tips: "務必提前預約 Evening Viewing 門票；現場嚴禁拍照與攝影。", cat: "ACTIVITY" }
+        ]
+      },
+      {
+        day: 14,
+        date: "2026/10/30 (五)",
+        title: "露營車黑灰水整備、歸還車輛 & 入住機場飯店",
+        distKm: 260,
+        summary: "清空黑灰水與加滿柴油瓦斯，返回基督城歸還露營車，入住 Novotel。",
+        rows: [
+          { time: "08:30 - 09:30", activity: "營地清空與露營車基礎整備（傾倒黑水/灰水、加滿清潔水）。", transport: "靜止 / 0 km", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Oamaru+TOP+10+Holiday+Park", mapsLabel: "Oamaru Dump Station", food: "營地自備早餐", foodUrl: "", tips: "利用 Holiday Park 設施處理廢水最乾淨衛生，省去在外尋找時間。", cat: "CAMP" },
+          { time: "09:30 - 13:00", activity: "沿 SH1 公路北上開回基督城。", transport: "露營車 / 約 250 km (3.25h)", stay: "3.5 小時", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Oamaru&destination=Christchurch&travelmode=driving", mapsLabel: "奧瑪魯至基督城", food: "Salmon Tales Cafe (Rakaia)", foodUrl: "https://www.google.com/maps/search/?api=1&query=Salmon+Tales+Cafe+Rakaia", tips: "SH1 為主要幹道路況良好；途經 Ashburton 留意速限降至 50 km/h。", cat: "DRIVE" },
+          { time: "13:00 - 14:00", activity: "機場周邊完成最終整備：加滿柴油與瓦斯（LPG Refill）。", transport: "露營車 / 約 10 km (15分)", stay: "1 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=BP+Connect+Christchurch+Airport", mapsLabel: "BP 機場站 (加柴油與瓦斯)", food: "便捷超市輕食", foodUrl: "", tips: "還車前務必加滿柴油與瓦斯並保留發票，否則會被收取高額代加費。", cat: "DRIVE" },
+          { time: "14:00 - 15:30", activity: "Maui Rental Christchurch 辦理歸還露營車。", transport: "露營車 / 約 3 km (5分)", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Maui+Motorhome+Rental+Christchurch", mapsLabel: "Maui Christchurch", food: "無", foodUrl: "", tips: "鑰匙、電源線、水管歸位，如實告知行駛狀況以快速辦妥手續。", cat: "DRIVE" },
+          { time: "15:30 - 16:00", activity: "Check-in 機場飯店（Novotel Christchurch Airport 或 Sudima）。", transport: "接駁/步行 / 約 1 km", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Novotel+Christchurch+Airport", mapsLabel: "Novotel 機場飯店", food: "無", foodUrl: "", tips: "卸下大件行李入房間，結束 10 多天來的自駕任務，徹底放鬆身心。", cat: "CAMP" },
+          { time: "16:00 - 18:30", activity: "自由散步或至 International Antarctic Centre 體驗。", transport: "步行往返 / 0 km", stay: "2.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=International+Antarctic+Centre", mapsLabel: "國際南極中心", food: "Spitfire Square 餐廳區", foodUrl: "https://www.google.com/maps/search/?api=1&query=Spitfire+Square+Christchurch", tips: "可利用傍晚至 Spitfire Square 的 Countdown 超市採買最後伴手禮。", cat: "ACTIVITY" },
+          { time: "18:30 - 21:00", activity: "慶功晚餐與收拾托運行李。", transport: "步行 / 0 km", stay: "2.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Spitfire+Square+Christchurch", mapsLabel: "Spitfire Square", food: "The Food Exchange / Lone Star", foodUrl: "https://www.google.com/maps/search/?api=1&query=Lone+Star+Spitfire+Square", tips: "整理所有托運行李，液體與刀具收入託運箱，早點休息準備隔天航班。", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 15,
+        date: "2026/10/31 (六)",
+        title: "基督城搭機返程 (墨爾本轉機) 回到香港",
+        distKm: 0,
+        summary: "清晨離境報到，經墨爾本轉機安全返抵香港，圓滿收官南島之旅。",
+        rows: [
+          { time: "03:30 - 04:00", activity: "早起與飯店退房 Check-out。", transport: "步行 / 0 km", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Novotel+Christchurch+Airport", mapsLabel: "Novotel 機場飯店", food: "無", foodUrl: "", tips: "入住 Novotel 者拉行李步行 2 分鐘即可直達離境航廈大廳。", cat: "FLIGHT" },
+          { time: "04:00 - 04:30", activity: "基督城機場（CHC）澳航櫃檯辦理 QF168 登機與行李直掛。", transport: "步行 / 約 200 m (2分)", stay: "30 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Airport+Departures", mapsLabel: "基督城機場離境大廳", food: "機場咖啡廳", foodUrl: "", tips: "辦理手續時請向櫃檯人員確認托運行李標籤終點站印有 HKG。", cat: "FLIGHT" },
+          { time: "04:30 - 06:05", activity: "安檢與海關出境。", transport: "步行 / 0 km", stay: "1.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Airport+Departures", mapsLabel: "基督城機場禁區", food: "澳航貴賓室 / 機場餐飲", foodUrl: "", tips: "清晨部分店舖尚未營業，可善用貴賓室或候機室等待登機。", cat: "FLIGHT" },
+          { time: "06:05 - 08:00", activity: "QF168：基督城飛往墨爾本（MEL，飛行時間約 3 小時 55 分鐘）。", transport: "飛航中 / 0 km", stay: "3.91 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+MEL", mapsLabel: "墨爾本機場 MEL", food: "機上早餐", foodUrl: "", tips: "紐西蘭與墨爾本有 2 小時時差（夏令時間），抵達墨爾本為 08:00。", cat: "FLIGHT" },
+          { time: "08:00 - 11:05", activity: "墨爾本國際機場（MEL）T2 航廈過境轉機（轉機約 3 小時）。", transport: "轉機步行 / 0 km", stay: "3.08 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+Terminal+2", mapsLabel: "墨爾本 T2 轉機區", food: "Brunetti Classico / Axil Coffee", foodUrl: "https://www.google.com/maps/search/?api=1&query=Brunetti+Melbourne+Airport", tips: "同為 Qantas 國際航班且在 T2，不需入境澳洲或提行李，可享用墨爾本咖啡。", cat: "FLIGHT" },
+          { time: "11:05 - 17:35", activity: "QF29：墨爾本飛往香港（HKG，飛行時間約 9 小時 30 分鐘）。", transport: "飛航中 / 0 km", stay: "9.5 小時", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport", mapsLabel: "香港國際機場", food: "機上午晚餐", foodUrl: "", tips: "飛機上記得將手錶或手機時間調回香港時間（比墨爾本慢 3 小時）。", cat: "FLIGHT" },
+          { time: "17:35", activity: "安抵香港國際機場（HKG），提取行李返家。", transport: "步行與地面交通", stay: "0 分鐘", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Arrivals", mapsLabel: "香港機場入境大廳", food: "無", foodUrl: "", tips: "傍晚抵港，晚餐時間剛好回到家，完美收官 15 天南島之旅！", cat: "FLIGHT" }
+        ]
+      }
+    ];
+
+    // --- 2. GOURMET HIGHLIGHTS DATA ---
+    const GOURMET_DATA = [
+      { name: "Kohan Japanese Restaurant", loc: "蒂卡波湖 Lake Tekapo", desc: "知名湖景日式料理，特選鮭魚丼飯與日式定食，面向蔚藍湖水極具特色。", tag: "日式湖景", link: "https://www.google.com/maps/search/?api=1&query=Kohan+Japanese+Restaurant+Lake+Tekapo" },
+      { name: "Mt Cook Alpine Salmon Shop", loc: "普卡基湖 Lake Pukaki", desc: "位於冰川牛奶藍湖畔，提供現切淡水高山冰川鮭魚生魚片，鮮甜無比。", tag: "冰川鮭魚", link: "https://www.google.com/maps/search/?api=1&query=Mt+Cook+Alpine+Salmon+Lake+Pukaki" },
+      { name: "Astro Café", loc: "約翰山頂 Mount John", desc: "獲評世界級景觀咖啡館，360 度俯瞰蒂卡波湖與亞歷山德里娜湖。", tag: "山頂咖啡", link: "https://www.google.com/maps/search/?api=1&query=Astro+Cafe+Mount+John" },
+      { name: "Francesca's Italian Kitchen", loc: "瓦納卡 Wanaka", desc: "極具盛名的義式柴燒披薩與手工義大利麵，氣氛熱烈，需提早 2 週預訂。", tag: "義式柴燒", link: "https://www.google.com/maps/search/?api=1&query=Francesca%27s+Italian+Kitchen+Wanaka" },
+      { name: "Fergburger", loc: "皇后鎮 Queenstown", desc: "紐西蘭最傳奇巨型漢堡，肉質多汁爆醬，推薦大鹿肉堡或特選牛肉堡。", tag: "傳奇漢堡", link: "https://www.google.com/maps/search/?api=1&query=Fergburger+Queenstown" },
+      { name: "Walter Peak Gourmet BBQ", loc: "皇后鎮 Queenstown", desc: "搭乘百年 TSS Earnslaw 蒸汽船橫渡湖泊，於高原牧場享用高品質烤肉饗宴。", tag: "蒸汽船 BBQ", link: "https://www.google.com/maps/search/?api=1&query=Walter+Peak+High+Country+Farm" },
+      { name: "Miles Better Pies", loc: "蒂阿瑙 Te Anau", desc: "在地超高評價紐式肉派店，特別推薦鹿肉派（Venison Pie）與海鮮派。", tag: "特色肉派", link: "https://www.google.com/maps/search/?api=1&query=Miles+Better+Pies+Te+Anau" },
+      { name: "Fleur's Place", loc: "摩拉基 Moeraki", desc: "位於漁港碼頭邊的名店，主打當日捕撈現做海鮮與野生黑邊鮑魚。", tag: "漁港海鮮", link: "https://www.google.com/maps/search/?api=1&query=Fleurs+Place+Moeraki" }
+    ];
+
+    // --- 3. CHECKLIST DATA ---
+    const CHECKLIST_ITEMS = [
+      { id: "c1", text: "下載 Google Maps 紐西蘭南島全區離線地圖" },
+      { id: "c2", text: "預先填寫 NZTD 紐西蘭入境申報 App / 紙本申報卡" },
+      { id: "c3", text: "檢查登山鞋底部乾淨無泥土（避免生物安全受阻）" },
+      { id: "c4", text: " Maui 露營車預先完成 Online Check-in 節省門市時間" },
+      { id: "c5", text: "預訂 White Horse Hill (Cook) DOC 無插座營地位" },
+      { id: "c6", text: "預訂 TSS Earnslaw 蒸汽船 & Walter Peak 晚宴" },
+      { id: "c7", text: "預訂 Oamaru 藍企鵝歸巢 Evening Viewing 門票" },
+      { id: "c8", text: " Te Anau 進入峽灣前車輛加滿柴油 (Full Tank)" },
+      { id: "c9", text: "準備車載 USB 轉接頭與 230V 延長線" },
+      { id: "c10", text: " Day 14 還車前加滿柴油 + LPG 瓦斯並留存發票" }
+    ];
+
+    // --- STATE MANAGEMENT ---
+    let activeDay = 1;
+    let activeCategory = 'ALL';
+    let searchQuery = '';
+
+    // --- INITIALIZATION ---
+    document.addEventListener("DOMContentLoaded", () => {
+      renderDayButtons();
+      renderSchedule();
+      renderCharts();
+      renderGourmetGrid();
+      renderChecklist();
+
+      // Search event
+      document.getElementById('itinerarySearch').addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        renderSchedule();
+      });
+    });
+
+    // --- RENDER DAY BUTTONS ---
+    function renderDayButtons() {
+      const container = document.getElementById('dayButtonsContainer');
+      container.innerHTML = ITINERARY_DATA.map(d => `
+        <button onclick="switchDay(${d.day})" id="dayBtn-${d.day}" 
+                class="day-btn text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-lg border whitespace-nowrap transition-all ${d.day === activeDay ? 'bg-emerald-800 text-white border-emerald-800 shadow-sm' : 'bg-white text-stone-700 border-stone-300 hover:bg-stone-100'}">
+          D${d.day} (${d.date.split(' ')[0].split('/')[1]}/${d.date.split(' ')[0].split('/')[2]})
+        </button>
+      `).join('');
+    }
+
+    // --- SWITCH DAY ---
+    function switchDay(day) {
+      activeDay = day;
+      document.querySelectorAll('.day-btn').forEach(btn => {
+        btn.classList.remove('bg-emerald-800', 'text-white', 'border-emerald-800', 'shadow-sm');
+        btn.classList.add('bg-white', 'text-stone-700', 'border-stone-300');
+      });
+      const currentBtn = document.getElementById(`dayBtn-${day}`);
+      if (currentBtn) {
+        currentBtn.classList.remove('bg-white', 'text-stone-700', 'border-stone-300');
+        currentBtn.classList.add('bg-emerald-800', 'text-white', 'border-emerald-800', 'shadow-sm');
+      }
+      renderSchedule();
+    }
+
+    // --- FILTER CATEGORY ---
+    function filterCategory(cat) {
+      activeCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-emerald-800', 'text-white');
+        btn.classList.add('bg-stone-200', 'text-stone-700');
+      });
+      event.target.classList.remove('bg-stone-200', 'text-stone-700');
+      event.target.classList.add('active', 'bg-emerald-800', 'text-white');
+      renderSchedule();
+    }
+
+    // --- RENDER SCHEDULE TABLE ---
+    function renderSchedule() {
+      const dayData = ITINERARY_DATA.find(d => d.day === activeDay);
+      const summaryCard = document.getElementById('daySummaryCard');
+      const tableBody = document.getElementById('scheduleTableBody');
+
+      if (!dayData) return;
+
+      // Update Summary Card
+      summaryCard.innerHTML = `
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="bg-emerald-800 text-white text-xs font-bold px-2 py-0.5 rounded">Day ${dayData.day}</span>
+            <span class="text-xs text-stone-600 font-semibold">${dayData.date}</span>
+          </div>
+          <h3 class="text-lg font-bold text-stone-900 mt-1">${dayData.title}</h3>
+          <p class="text-xs text-stone-600 mt-0.5">${dayData.summary}</p>
+        </div>
+        <div class="text-right sm:text-right flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto border-t sm:border-t-0 border-emerald-200 pt-2 sm:pt-0">
+          <span class="text-xs text-stone-500 font-medium">本日預估自駕里程</span>
+          <span class="text-base font-extrabold text-emerald-900">${dayData.distKm} km</span>
+        </div>
+      `;
+
+      // Filter rows
+      let rows = dayData.rows;
+
+      if (activeCategory !== 'ALL') {
+        rows = rows.filter(r => r.cat === activeCategory);
+      }
+
+      if (searchQuery) {
+        rows = rows.filter(r => 
+          r.activity.toLowerCase().includes(searchQuery) ||
+          r.food.toLowerCase().includes(searchQuery) ||
+          r.tips.toLowerCase().includes(searchQuery) ||
+          r.mapsLabel.toLowerCase().includes(searchQuery)
+        );
+      }
+
+      if (rows.length === 0) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="7" class="py-8 text-center text-stone-400">
+              🔍 未找到符合條件的行程項目（試試切換天數或清除搜尋字詞）
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tableBody.innerHTML = rows.map(r => {
+        let badgeStyle = "bg-stone-100 text-stone-700";
+        if (r.cat === 'DRIVE') badgeStyle = "bg-blue-50 text-blue-800 border border-blue-200";
+        if (r.cat === 'HIKE') badgeStyle = "bg-emerald-50 text-emerald-800 border border-emerald-200";
+        if (r.cat === 'ACTIVITY') badgeStyle = "bg-amber-50 text-amber-800 border border-amber-200";
+        if (r.cat === 'FOOD') badgeStyle = "bg-rose-50 text-rose-800 border border-rose-200";
+        if (r.cat === 'CAMP') badgeStyle = "bg-purple-50 text-purple-800 border border-purple-200";
+
+        return `
+          <tr class="hover:bg-stone-50/80 transition text-stone-800">
+            <td class="py-3 px-4 font-bold text-stone-900 whitespace-nowrap text-xs sm:text-sm">
+              ${r.time}
+            </td>
+            <td class="py-3 px-4">
+              <div class="font-medium text-stone-900">${r.activity}</div>
+            </td>
+            <td class="py-3 px-4 text-xs text-stone-600">
+              <span class="inline-block px-2 py-0.5 rounded text-[11px] font-semibold ${badgeStyle}">
+                ${r.transport}
+              </span>
+            </td>
+            <td class="py-3 px-4 text-xs font-semibold text-stone-700 whitespace-nowrap">
+              ⏱️ ${r.stay}
+            </td>
+            <td class="py-3 px-4 whitespace-nowrap">
+              <a href="${r.mapsUrl}" target="_blank" rel="noopener" 
+                 class="inline-flex items-center space-x-1 bg-emerald-700 hover:bg-emerald-800 text-white text-xs px-2.5 py-1.5 rounded shadow-sm font-medium transition">
+                <span>📍 ${r.mapsLabel || '導航'}</span>
+                <span class="text-[10px]">↗</span>
+              </a>
+            </td>
+            <td class="py-3 px-4 text-xs">
+              ${r.food !== '無' ? `
+                <div class="font-semibold text-stone-800">🍽️ ${r.food}</div>
+                ${r.foodUrl ? `<a href="${r.foodUrl}" target="_blank" class="text-emerald-700 hover:underline text-[11px]">查看地點 ↗</a>` : ''}
+              ` : `<span class="text-stone-400">自備或無</span>`}
+            </td>
+            <td class="py-3 px-4 text-xs text-stone-600 bg-stone-50/50 rounded-lg">
+              💡 ${r.tips}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // --- 4. RENDER CHARTS (CHART.JS) ---
+    function renderCharts() {
+      // Chart 1: Distance Bar Chart
+      const distCtx = document.getElementById('distanceChart').getContext('2d');
+      const dayLabels = ITINERARY_DATA.map(d => `D${d.day}`);
+      const distData = ITINERARY_DATA.map(d => d.distKm);
+
+      new Chart(distCtx, {
+        type: 'bar',
+        data: {
+          labels: dayLabels,
+          datasets: [{
+            label: '每日車程 (km)',
+            data: distData,
+            backgroundColor: distData.map(v => v > 200 ? '#b91c1c' : (v > 100 ? '#059669' : '#a8a29e')),
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (context) => ` 車程: ${context.raw} 公里`
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: '公里 (km)', font: { size: 11 } }
+            },
+            x: {
+              ticks: { font: { size: 10 } }
+            }
+          }
+        }
+      });
+
+      // Chart 2: Activity Split Doughnut Chart
+      const actCtx = document.getElementById('activityChart').getContext('2d');
+      new Chart(actCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['景點觀光與極限', '高山冰川健行', '公路自駕移動', '美食補給', '營地整備與休養'],
+          datasets: [{
+            data: [35, 20, 25, 12, 8],
+            backgroundColor: ['#d97706', '#059669', '#2563eb', '#e11d48', '#7c3aed']
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { font: { size: 11 }, boxWidth: 12 }
+            }
+          }
+        }
+      });
+    }
+
+    // --- 5. STRATEGY TABS ---
+    function switchStrategyTab(tabKey) {
+      document.querySelectorAll('.strat-tab').forEach(b => {
+        b.classList.remove('border-emerald-800', 'text-emerald-900', 'bg-emerald-50');
+        b.classList.add('border-transparent', 'text-stone-600');
+      });
+      document.querySelectorAll('.strat-content').forEach(c => c.classList.add('hidden'));
+
+      const activeTabBtn = document.getElementById(`tab-${tabKey}`);
+      const activeContent = document.getElementById(`strat-content-${tabKey}`);
+
+      if (activeTabBtn && activeContent) {
+        activeTabBtn.classList.remove('border-transparent', 'text-stone-600');
+        activeTabBtn.classList.add('border-emerald-800', 'text-emerald-900', 'bg-emerald-50');
+        activeContent.classList.remove('hidden');
+      }
+    }
+
+    // --- 6. RENDER GOURMET GRID ---
+    function renderGourmetGrid() {
+      const container = document.getElementById('gourmetGrid');
+      container.innerHTML = GOURMET_DATA.map(g => `
+        <div class="bg-white border border-stone-200 rounded-xl p-4 shadow-sm flex flex-col justify-between hover:border-emerald-300 transition">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">${g.tag}</span>
+              <span class="text-xs text-stone-500 font-medium">${g.loc}</span>
+            </div>
+            <h4 class="font-bold text-stone-900 text-base mb-1">${g.name}</h4>
+            <p class="text-xs text-stone-600 leading-relaxed">${g.desc}</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 flex justify-end">
+            <a href="${g.link}" target="_blank" rel="noopener" 
+               class="text-xs font-semibold text-emerald-800 hover:text-emerald-900 inline-flex items-center space-x-1">
+              <span>📍 Google Maps 導航</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // --- 7. RENDER CHECKLIST ---
+    function renderChecklist() {
+      const container = document.getElementById('checklistItemsContainer');
+      const savedState = JSON.parse(localStorage.getItem('nz_checklist') || '{}');
+
+      container.innerHTML = CHECKLIST_ITEMS.map(item => {
+        const isChecked = savedState[item.id] || false;
+        return `
+          <label class="flex items-start space-x-3 p-3 rounded-lg border border-stone-200 bg-stone-50/50 hover:bg-white cursor-pointer transition">
+            <input type="checkbox" id="${item.id}" ${isChecked ? 'checked' : ''} onchange="toggleCheckItem('${item.id}')"
+                   class="mt-0.5 h-4 w-4 text-emerald-800 focus:ring-emerald-700 border-stone-300 rounded">
+            <span class="text-xs sm:text-sm text-stone-800 ${isChecked ? 'line-through text-stone-400' : ''}">${item.text}</span>
+          </label>
+        `;
+      }).join('');
+
+      updateChecklistProgress();
+    }
+
+    function toggleCheckItem(id) {
+      const savedState = JSON.parse(localStorage.getItem('nz_checklist') || '{}');
+      const checkbox = document.getElementById(id);
+      savedState[id] = checkbox.checked;
+      localStorage.setItem('nz_checklist', JSON.stringify(savedState));
+      renderChecklist();
+    }
+
+    function updateChecklistProgress() {
+      const savedState = JSON.parse(localStorage.getItem('nz_checklist') || '{}');
+      const checkedCount = Object.values(savedState).filter(Boolean).length;
+      const total = CHECKLIST_ITEMS.length;
+      const percentage = Math.round((checkedCount / total) * 100);
+
+      document.getElementById('checklistProgressText').innerText = `${percentage}% (${checkedCount}/${total})`;
+      document.getElementById('checklistProgressBar').style.width = `${percentage}%`;
+    }
+  </script>
+</body>
+</html>
