@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Zealand South Island 15-Day Campervan Self-Drive Dynamic Navigation Guide & Strategic Analysis</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Custom Chart Container Rules */
+    .chart-container {
+      position: relative;
+      width: 100%;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      height: 320px;
+      max-height: 380px;
+    }
+    @media (min-width: 768px) {
+      .chart-container {
+        height: 350px;
+      }
+    }
+    /* Custom Scrollbar for smooth experience */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans leading-relaxed min-h-screen flex flex-col">
+
+  <!-- Top Announcement / Header -->
+  <header class="bg-emerald-900 text-stone-100 shadow-md border-b border-emerald-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <span class="text-2xl">🇳🇿</span>
+        <div>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white">NZ South Island 15-Day Campervan Dynamic Navigation Guide</h1>
+          <p class="text-xs text-emerald-200 hidden sm:block">2026/10/17 - 10/31 Clockwise Loop Strategic Plan × One-Click Google Maps Navigation</p>
+        </div>
+      </div>
+      
+      <!-- Quick Navigation Tabs -->
+      <nav class="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm font-medium">
+        <a href="#itinerary-section" class="px-2.5 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white transition">🗓️ Daily Itinerary</a>
+        <a href="#analytics-section" class="px-2.5 py-1.5 rounded-lg hover:bg-emerald-800 text-emerald-100 transition">📊 Route Analytics</a>
+        <a href="#strategy-section" class="px-2.5 py-1.5 rounded-lg hover:bg-emerald-800 text-emerald-100 transition">🛡️ Strategic Guide</a>
+        <a href="#gourmet-section" class="px-2.5 py-1.5 rounded-lg hover:bg-emerald-800 text-emerald-100 transition">🍽️ Gourmet Highlights</a>
+        <a href="#checklist-section" class="px-2.5 py-1.5 rounded-lg hover:bg-emerald-800 text-emerald-100 transition">🎒 Checklist</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Overview & Metrics Summary -->
+  <section class="bg-gradient-to-b from-emerald-900 to-emerald-800 text-white py-8 px-4 sm:px-6 lg:px-8 shadow-inner">
+    <div class="max-w-7xl mx-auto">
+      <div class="md:flex md:items-center md:justify-between mb-6">
+        <div>
+          <span class="inline-block bg-amber-500 text-emerald-950 font-bold text-xs px-2.5 py-1 rounded-full mb-2">Spring Campervan Special Edition</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">South Island Alpine Glaciers & Lakes Exploration</h2>
+          <p class="mt-2 text-sm sm:text-base text-emerald-100 max-w-3xl">
+            This guide fully digitizes the 15-day loop itinerary, featuring precise time planning, point-to-point driving durations, recommended stay times, highly-rated en-route dining, complete with 100% one-click Google Maps navigation and campervan water/power defensive driving tactics.
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-stone-800">
+        <div class="bg-stone-50/95 backdrop-blur p-3.5 rounded-xl border border-stone-200 shadow-sm flex items-center space-x-3">
+          <span class="text-2xl">📅</span>
+          <div>
+            <div class="text-xs text-stone-500 font-medium">Trip Duration</div>
+            <div class="text-lg font-bold text-emerald-900">15 Days 14 Nights</div>
+          </div>
+        </div>
+        <div class="bg-stone-50/95 backdrop-blur p-3.5 rounded-xl border border-stone-200 shadow-sm flex items-center space-x-3">
+          <span class="text-2xl">🛣️</span>
+          <div>
+            <div class="text-xs text-stone-500 font-medium">Estimated Distance</div>
+            <div class="text-lg font-bold text-emerald-900">Approx. 1,480 km</div>
+          </div>
+        </div>
+        <div class="bg-stone-50/95 backdrop-blur p-3.5 rounded-xl border border-stone-200 shadow-sm flex items-center space-x-3">
+          <span class="text-2xl">🚐</span>
+          <div>
+            <div class="text-xs text-stone-500 font-medium">Vehicle Model</div>
+            <div class="text-lg font-bold text-emerald-900">Maui Campervan</div>
+          </div>
+        </div>
+        <div class="bg-stone-50/95 backdrop-blur p-3.5 rounded-xl border border-stone-200 shadow-sm flex items-center space-x-3">
+          <span class="text-2xl">📍</span>
+          <div>
+            <div class="text-xs text-stone-500 font-medium">Core Regions</div>
+            <div class="text-lg font-bold text-emerald-900">7 Key Regions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+    <!-- SECTION 1: ITINERARY EXPLORER -->
+    <section id="itinerary-section" class="scroll-mt-20">
+      <div class="border-b border-stone-200 pb-4 mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold tracking-wider text-emerald-800 uppercase">Interactive Itinerary</span>
+          <h2 class="text-2xl font-bold text-stone-900 mt-0.5">Daily Interactive Navigation Schedule</h2>
+          <p class="text-sm text-stone-600 mt-1">
+            Click day buttons to toggle schedules, or use category pills and the search box to quickly locate attractions, dining, and navigation links.
+          </p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="w-full md:w-72">
+          <div class="relative">
+            <input type="text" id="itinerarySearch" placeholder="🔍 Search spots, food, or keywords..." 
+                   class="w-full pl-9 pr-4 py-2 bg-white border border-stone-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:border-transparent">
+          </div>
+        </div>
+      </div>
+
+      <!-- Day Switcher Buttons -->
+      <div class="mb-4 overflow-x-auto pb-2 flex items-center space-x-2 scrollbar-thin" id="dayButtonsContainer">
+        <!-- JS generated Day buttons -->
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="mb-6 flex flex-wrap gap-2 text-xs font-medium text-stone-600">
+        <button onclick="filterCategory('ALL')" class="cat-btn active bg-emerald-800 text-white px-3 py-1.5 rounded-full transition">All Items</button>
+        <button onclick="filterCategory('DRIVE')" class="cat-btn bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1.5 rounded-full transition">🚗 Self-Drive</button>
+        <button onclick="filterCategory('HIKE')" class="cat-btn bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1.5 rounded-full transition">🥾 Hiking Trails</button>
+        <button onclick="filterCategory('ACTIVITY')" class="cat-btn bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1.5 rounded-full transition">🪂 Key Activities</button>
+        <button onclick="filterCategory('FOOD')" class="cat-btn bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1.5 rounded-full transition">🍽️ Food & Dining</button>
+        <button onclick="filterCategory('CAMP')" class="cat-btn bg-stone-200 hover:bg-stone-300 text-stone-700 px-3 py-1.5 rounded-full transition">⛺ Campsites</button>
+      </div>
+
+      <!-- Active Day Header Summary Card -->
+      <div id="daySummaryCard" class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-6 text-stone-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <!-- JS dynamically fills this -->
+      </div>
+
+      <!-- Schedule Table / Card List -->
+      <div class="bg-white border border-stone-200 rounded-xl shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="bg-stone-100 text-stone-700 font-semibold border-b border-stone-200">
+                <th class="py-3 px-4 w-32">Time</th>
+                <th class="py-3 px-4 min-w-[200px]">Highlights & Activity Details</th>
+                <th class="py-3 px-4 w-44">Transport & Est. Drive</th>
+                <th class="py-3 px-4 w-28">Stay Duration</th>
+                <th class="py-3 px-4 w-36">One-Click Nav</th>
+                <th class="py-3 px-4 min-w-[180px]">En-Route Top Dining</th>
+                <th class="py-3 px-4 min-w-[240px]">Practical Tips & Crowd Avoidance</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleTableBody" class="divide-y divide-stone-100">
+              <!-- JS rendered rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: ROUTE & MILEAGE ANALYTICS -->
+    <section id="analytics-section" class="scroll-mt-20">
+      <div class="border-b border-stone-200 pb-4 mb-6">
+        <span class="text-xs font-bold tracking-wider text-emerald-800 uppercase">Driving Analytics</span>
+        <h2 class="text-2xl font-bold text-stone-900 mt-0.5">Drive Distance & Time Allocation Analysis</h2>
+        <p class="text-sm text-stone-600 mt-1">
+          Visual charts help assess daily driving loads, plan co-driver switches and rest points in advance to ensure driving safety.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Chart 1: Daily Driving Distance -->
+        <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <h3 class="text-base font-bold text-stone-800 mb-1">🚘 Daily Driving Distance (km)</h3>
+            <p class="text-xs text-stone-500 mb-4">Peak driving days are Day 10 (Te Anau), Day 12 (Dunedin), and Day 14 (Return to Christchurch)</p>
+          </div>
+          <div class="chart-container">
+            <canvas id="distanceChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart 2: Trip Activity Composition -->
+        <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <h3 class="text-base font-bold text-stone-800 mb-1">🧗‍♂️ Activity Type Distribution Across Trip</h3>
+            <p class="text-xs text-stone-500 mb-4">Combines alpine hiking, extreme sports, glacier cruising, and relaxed town exploration</p>
+          </div>
+          <div class="chart-container">
+            <canvas id="activityChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 3: STRATEGIC DRIVING & CAMPERVAN SURVIVAL GUIDE -->
+    <section id="strategy-section" class="scroll-mt-20">
+      <div class="border-b border-stone-200 pb-4 mb-6">
+        <span class="text-xs font-bold tracking-wider text-emerald-800 uppercase">Campervan Strategic Analysis</span>
+        <h2 class="text-2xl font-bold text-stone-900 mt-0.5">Comprehensive Strategic Route Analysis & Insights</h2>
+        <p class="text-sm text-stone-600 mt-1">
+          Deep dive into NZ spring weather, high center-of-gravity campervan driving, utility power/water cycles, and critical resupply points.
+        </p>
+      </div>
+
+      <!-- Strategy Tabs Header -->
+      <div class="flex flex-wrap border-b border-stone-200 mb-6 gap-2" id="strategyTabHeaders">
+        <button onclick="switchStrategyTab('weather')" id="tab-weather" class="strat-tab text-sm font-semibold px-4 py-2.5 border-b-2 border-emerald-800 text-emerald-900 bg-emerald-50 rounded-t-lg transition">🌦️ Spring Weather & Contingency</button>
+        <button onclick="switchStrategyTab('driving')" id="tab-driving" class="strat-tab text-sm font-semibold px-4 py-2.5 border-b-2 border-transparent text-stone-600 hover:text-stone-900 rounded-t-lg transition">🚐 Campervan Risks & Terrain Driving</button>
+        <button onclick="switchStrategyTab('energy')" id="tab-energy" class="strat-tab text-sm font-semibold px-4 py-2.5 border-b-2 border-transparent text-stone-600 hover:text-stone-900 rounded-t-lg transition">⚡ Energy, Water & Campsite Balance</button>
+        <button onclick="switchStrategyTab('logistics')" id="tab-logistics" class="strat-tab text-sm font-semibold px-4 py-2.5 border-b-2 border-transparent text-stone-600 hover:text-stone-900 rounded-t-lg transition">⛽ Key Supplies & Return Terms</button>
+      </div>
+
+      <!-- Strategy Tab Content Bodies -->
+      <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm text-sm leading-relaxed text-stone-700">
+        
+        <!-- Tab 1: Weather -->
+        <div id="strat-content-weather" class="strat-content space-y-4">
+          <h3 class="text-lg font-bold text-emerald-900">Spring Climate Dynamics & Buffer Mechanisms for Outdoor Activities</h3>
+          <p>
+            Late October in New Zealand's South Island marks late spring and early summer, characterized by sharp alpine temperature swings and rapid barometric changes. Microclimates around the Southern Alps (e.g., Mount Cook and Wanaka) frequently expose high-altitude and glacier activities (such as heli-hikes and skydiving) to last-minute cancellation or rescheduling risks.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+            <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+              <div class="font-bold text-stone-900 mb-1">🎯 Morning Skydive Window (Day 7 Skydive)</div>
+              <p class="text-xs text-stone-600">Scheduled for 08:30 on Day 7, taking full advantage of the prime golden window before thermal convection builds and wind speeds remain calmest, leaving the afternoon as a weather delay buffer.</p>
+            </div>
+            <div class="bg-stone-50 p-4 rounded-lg border border-stone-200">
+              <div class="font-bold text-stone-900 mb-1">🧊 Tasman Glacier Heli Hike Backup Plan (Day 6 Heli Hike)</div>
+              <p class="text-xs text-stone-600">If heavy fog or rain grounds helicopters, the itinerary rapidly pivots to the ground-level Tasman Glacier View Track, ensuring your day's experience remains intact.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Driving -->
+        <div id="strat-content-driving" class="strat-content hidden space-y-4">
+          <h3 class="text-lg font-bold text-emerald-900">Campervan Vehicle Dynamics & Mountain Road Risk Management</h3>
+          <p>
+            Campervans feature a high center of gravity, large wind resistance, and long wheelbases. Their handling is fundamentally different from small passenger cars. After departing Christchurch, drivers must quickly switch habits from right-hand to left-hand traffic driving.
+          </p>
+          <ul class="list-disc pl-5 space-y-2 text-stone-700">
+            <li><strong>Avoid Crown Range Road:</strong> Day 8 routes via SH6 through Cromwell to Arrowtown and Queenstown, avoiding the steep gradients, tight hairpin turns, and crosswinds of Crown Range Road, significantly lowering risks of losing control or brake overheating in large vehicles.</li>
+            <li><strong>Alpine Pass Low-Gear Engine Braking (Lindis Pass):</strong> On Day 6 when crossing Lindis Pass (nearly 1,000m elevation), utilize low-gear engine braking to avoid brake fade caused by constant braking on long downhill stretches.</li>
+            <li><strong>Reduce Speed on Gravel Sections (Moke Lake Gravel Road):</strong> On Day 10, reduce speed to 30–40 km/h and increase trailing distance on the 7km gravel road into Moke Lake to prevent flying stones from damaging the underbody water tank or windshield.</li>
+          </ul>
+        </div>
+
+        <!-- Tab 3: Energy -->
+        <div id="strat-content-energy" class="strat-content hidden space-y-4">
+          <h3 class="text-lg font-bold text-emerald-900">Power Supply, Campsite Balancing & Resource Cycles</h3>
+          <p>
+            Campervan self-sufficiency rests on four core systems: Fresh Water Tank, Grey/Black Water Tanks, House Battery, and LPG Gas.
+          </p>
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 text-xs text-amber-900 space-y-2">
+            <div class="font-bold text-sm text-amber-950">⚡ Alternating Symphony: Powered Sites vs DOC Unpowered Nature Campsites</div>
+            <p>Day 4 (Tekapo), Day 6 (Wanaka), Days 8-9 (Queenstown), and Days 10-11 (Te Anau TOP 10) are located at full-facility Holiday Parks, connecting the vehicle to 230V mains power to deep-charge the house battery, refill fresh water, and dump grey/black water.</p>
+            <p>This high-frequency resupply perfectly supports Day 5's stay at the unpowered White Horse Hill DOC campsite, letting you enjoy dark-sky starry nights deep in Mount Cook without sacrificing lighting or heating.</p>
+          </div>
+        </div>
+
+        <!-- Tab 4: Logistics -->
+        <div id="strat-content-logistics" class="strat-content hidden space-y-4">
+          <h3 class="text-lg font-bold text-emerald-900">Critical Resupply Checkpoints & Vehicle Return Guidelines</h3>
+          <div class="space-y-3">
+            <div class="flex items-start space-x-3">
+              <span class="text-xl">⛽</span>
+              <div>
+                <div class="font-bold text-stone-900">Te Anau: Final Resupply Before Milford Sound</div>
+                <div class="text-xs text-stone-600">On Day 10 upon arriving in Te Anau, fill your fuel tank completely! SH94 Milford Road is a 240km round trip with zero gas stations inside Fiordland National Park. A full tank ensures heater operation during unexpected delays.</div>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <span class="text-xl">📋</span>
+              <div>
+                <div class="font-bold text-stone-900">Day 14 Campervan Return Checklist</div>
+                <div class="text-xs text-stone-600">Before returning the van, complete diesel refueling (Full Tank) and LPG refill at BP Christchurch Airport and retain receipts. Empty black and grey water tanks at the campsite Dump Station that morning to avoid heavy service fees.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: GOURMET HIGHLIGHTS -->
+    <section id="gourmet-section" class="scroll-mt-20">
+      <div class="border-b border-stone-200 pb-4 mb-6">
+        <span class="text-xs font-bold tracking-wider text-emerald-800 uppercase">Must-Eat Culinary Guide</span>
+        <h2 class="text-2xl font-bold text-stone-900 mt-0.5">Recommended High-Rated En-Route Dining Highlights</h2>
+        <p class="text-sm text-stone-600 mt-1">
+          A curated selection of unmissable local culinary spots—from alpine glacier salmon to a century-old steamship BBQ feast.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="gourmetGrid">
+        <!-- JS rendered gourmet cards -->
+      </div>
+    </section>
+
+
+    <!-- SECTION 5: PRE-TRIP CHECKLIST -->
+    <section id="checklist-section" class="scroll-mt-20">
+      <div class="border-b border-stone-200 pb-4 mb-6">
+        <span class="text-xs font-bold tracking-wider text-emerald-800 uppercase">Pre-Trip Checklist</span>
+        <h2 class="text-2xl font-bold text-stone-900 mt-0.5">Pre-Departure & Operations Check-List</h2>
+        <p class="text-sm text-stone-600 mt-1">
+          An interactive checklist with progress automatically saved to your browser to help you execute your trip seamlessly.
+        </p>
+      </div>
+
+      <div class="bg-white border border-stone-200 rounded-xl p-6 shadow-sm">
+        <!-- Progress Bar -->
+        <div class="mb-6">
+          <div class="flex justify-between items-center text-xs font-bold text-stone-700 mb-2">
+            <span>Preparation Progress</span>
+            <span id="checklistProgressText">0%</span>
+          </div>
+          <div class="w-full bg-stone-200 rounded-full h-3">
+            <div id="checklistProgressBar" class="bg-emerald-700 h-3 rounded-full transition-all duration-300 w-0"></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm" id="checklistItemsContainer">
+          <!-- JS generated check items -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-stone-900 text-stone-400 py-8 border-t border-stone-800 text-center text-xs">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p class="text-stone-300 font-semibold text-sm">New Zealand South Island 15-Day Campervan Dynamic Navigation Guide & Strategic Analysis</p>
+      <p>Christchurch (CHC) Start & Finish Clockwise Loop Strategic Edition • Powered by Tailwind CSS & Chart.js</p>
+      <p class="text-stone-500">Wishing you a safe, smooth, and soul-stirring journey exploring alpine peaks, glaciers, and lakes!</p>
+    </div>
+  </footer>
+
+
+  <!-- JS APPLICATION LOGIC -->
+  <script>
+    // --- 1. FULL ITINERARY DATA STRUCTURE ---
+    const ITINERARY_DATA = [
+      {
+        day: 1,
+        date: "2026/10/17 (Sat)",
+        title: "Flight from Hong Kong to Melbourne (Overnight Flight)",
+        distKm: 0,
+        summary: "Pre-departure flight prep, ample sleep on board, jet lag adjustment, and mental prep for left-hand driving.",
+        rows: [
+          { time: "16:30 - 17:00", activity: "Arrive at Hong Kong International Airport (HKG), complete online check-in and baggage drop.", transport: "Private Car / Airport Express", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport", mapsLabel: "Hong Kong Int'l Airport", food: "Tai Hing Roast / Ho Hung Kee (Airport)", foodUrl: "https://www.google.com/maps/search/?api=1&query=Tai+Hing+Hong+Kong+International+Airport", tips: "Weekend departures can be busy; arriving 3 hours early is recommended for security checks.", cat: "FLIGHT" },
+          { time: "17:00 - 19:15", activity: "Security clearance & boarding wait; purchase long-haul flight supplies in the restricted area.", transport: "Walking / 0 km", stay: "2.25 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hong+Kong+Airport+Terminal+1+Departures", mapsLabel: "HKG Airport T1", food: "Airside Cafe / Bakery", foodUrl: "", tips: "Fill warm water bottles after security; cabin air is dry on long-haul flights.", cat: "FLIGHT" },
+          { time: "19:25 - 20:05", activity: "Boarding (QF30 scheduled departure 20:05 to Melbourne MEL).", transport: "Boarding / 0 km", stay: "40 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hong+Kong+Airport+Terminal+1", mapsLabel: "QF30 Boarding Gate", food: "In-flight Meal", foodUrl: "", tips: "Adjust watch to NZ Daylight Savings Time (+5 hours ahead of HKG) and rest early.", cat: "FLIGHT" },
+          { time: "20:05 - Onboard", activity: "Overnight flight & sleep (flight duration approx. 9 hrs 15 mins).", transport: "In Flight / 0 km", stay: "9.25 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+MEL", mapsLabel: "Melbourne Airport MEL", food: "In-flight Supper & Breakfast", foodUrl: "", tips: "You will adapt to left-hand driving tomorrow upon vehicle pickup; sleep well tonight.", cat: "FLIGHT" }
+        ]
+      },
+      {
+        day: 2,
+        date: "2026/10/18 (Sun)",
+        title: "Arrive Christchurch & Downtown Stroll Rest",
+        distKm: 10,
+        summary: "Smooth customs clearance, transfer to Christchurch CBD hotel, riverbank walk to adapt to time difference.",
+        rows: [
+          { time: "08:20 - 12:15", activity: "Transit at Melbourne (MEL), clear transit procedures, connect to QF5563.", transport: "Transit Walking / 0 km", stay: "3.9 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+Terminal+2", mapsLabel: "MEL Transit Area", food: "St. Ali Coffee / Urban Providore", foodUrl: "https://www.google.com/maps/search/?api=1&query=St.+Ali+Melbourne+Airport", tips: "Nearly 4 hours of layover is ample; enjoy Melbourne specialty coffee and stretch your legs.", cat: "FLIGHT" },
+          { time: "12:15 - 17:25", activity: "Flight from Melbourne to Christchurch (QF5563, approx. 3 hrs 10 mins).", transport: "In Flight / 0 km", stay: "3.17 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+International+Airport", mapsLabel: "Christchurch Airport", food: "In-flight Meal", foodUrl: "", tips: "Complete the NZ Passenger Arrival Card onboard; declare all food and outdoor gear.", cat: "FLIGHT" },
+          { time: "17:25 - 18:40", activity: "Arrive Christchurch (CHC), clear customs and bio-security inspection.", transport: "Walking / 0 km", stay: "1.25 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Airport+Arrivals", mapsLabel: "CHC Airport Arrivals", food: "Airport Convenience Store", foodUrl: "", tips: "If carrying hiking boots or food, take the Declared lane for faster processing.", cat: "FLIGHT" },
+          { time: "18:40 - 19:10", activity: "Transfer to Christchurch CBD Hotel Check-in.", transport: "Uber/Taxi / Approx 10 km (20 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Christchurch+Airport&destination=Christchurch+Central+City&travelmode=driving", mapsLabel: "Airport to CBD Route", food: "None", foodUrl: "", tips: "Taking an Uber directly (~$35–45 NZD) with large luggage is the easiest choice.", cat: "DRIVE" },
+          { time: "19:30 - 21:00", activity: "Avon River stroll & dinner around New Regent Street / Riverside Market.", transport: "Walking / 0 km", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=New+Regent+Street+Christchurch", mapsLabel: "New Regent Street", food: "Riverside Market / Rollickin Gelato", foodUrl: "https://www.google.com/maps/search/?api=1&query=Riverside+Market+Christchurch", tips: "Buy drinking water at a supermarket after dinner, then rest early to rebuild energy.", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 3,
+        date: "2026/10/19 (Mon)",
+        title: "Christchurch Garden City Tour & Gondola Ride",
+        distKm: 0,
+        summary: "Walking tour of Garden City, Cardboard Cathedral & Botanic Gardens, ride gondola for panoramic views.",
+        rows: [
+          { time: "08:30 - 09:30", activity: "Kiwi-style breakfast around hotel and morning stroll.", transport: "Walking / 0 km", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Avon+River+Christchurch", mapsLabel: "Avon River Walk", food: "C4 Coffee Co. / Unknown Chapter", foodUrl: "https://www.google.com/maps/search/?api=1&query=C4+Coffee+Christchurch", tips: "Stroll along Avon River to the cafe to experience local specialty coffee culture.", cat: "FOOD" },
+          { time: "09:30 - 10:00", activity: "Visit Cardboard Cathedral.", transport: "Walking / Approx 800 m (10 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Cardboard+Cathedral+Christchurch", mapsLabel: "Cardboard Cathedral", food: "Nearby Cafes", foodUrl: "", tips: "Arrive right at 09:30 opening to admire sunlight streaming through stained glass onto paper tubes.", cat: "ACTIVITY" },
+          { time: "10:00 - 10:30", activity: "Explore New Regent Street.", transport: "Walking / Approx 700 m (10 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=New+Regent+Street+Christchurch", mapsLabel: "New Regent Street", food: "Rollickin Gelato / Craft Embassy", foodUrl: "https://www.google.com/maps/search/?api=1&query=Rollickin+Gelato+New+Regent+Street", tips: "Morning light is perfect for photographing Spanish Baroque architecture and heritage trams.", cat: "ACTIVITY" },
+          { time: "10:30 - 12:00", activity: "Riverside Market lunch & browsing.", transport: "Walking / Approx 800 m (10 mins)", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Riverside+Market+Christchurch", mapsLabel: "Riverside Market", food: "Bacon Bros Burgers / Dimitris Greek", foodUrl: "https://www.google.com/maps/search/?api=1&query=Bacon+Bros+Burgers+Riverside+Market", tips: "Arriving around 11:30 avoids the 12:00–13:00 local office lunch rush.", cat: "FOOD" },
+          { time: "12:00 - 14:00", activity: "Stroll Christchurch Botanic Gardens & Museum exterior.", transport: "Walking / Approx 1 km (15 mins)", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Botanic+Gardens", mapsLabel: "Christchurch Botanic Gardens", food: "Curator's House Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Curators+House+Cafe+Christchurch", tips: "Mid-October spring tulips and lush lawns make for exceptional garden scenery.", cat: "HIKE" },
+          { time: "14:00 - 16:00", activity: "Christchurch Gondola Experience.", transport: "Bus/Uber / Approx 10 km (40 mins)", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Gondola", mapsLabel: "Christchurch Gondola", food: "Red Rock Cafe at Gondola", foodUrl: "https://www.google.com/maps/search/?api=1&query=Red+Rock+Cafe+at+the+Christchurch+Gondola", tips: "If cloudy or windy, visibility might be obscured; pick a clear day for best experience.", cat: "ACTIVITY" },
+          { time: "17:00 - 19:00", activity: "Dinner in city center, early rest for tomorrow's campervan pick-up.", transport: "Walking / 0 km", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Central+City", mapsLabel: "Christchurch CBD", food: "Fiddlesticks / Twenty Seven Steps", foodUrl: "https://www.google.com/maps/search/?api=1&query=Fiddlesticks+Restaurant+Christchurch", tips: "Get a full night's sleep before starting your long-distance self-drive tour tomorrow.", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 4,
+        date: "2026/10/20 (Tue)",
+        title: "Pick Up Campervan, Grocery Supply & Drive to Lake Tekapo Stargazing",
+        distKm: 230,
+        summary: "Pick up Maui campervan, major grocery haul, drive to Tekapo campsite, night stargazing.",
+        rows: [
+          { time: "08:30 - 09:30", activity: "Hotel check-out, transfer to airport area vehicle pickup depot.", transport: "Uber / Approx 10 km (15 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Airport", mapsLabel: "Christchurch Airport Area", food: "Hotel Breakfast", foodUrl: "", tips: "If interested in Antarctic wildlife, visit International Antarctic Centre nearby beforehand.", cat: "DRIVE" },
+          { time: "09:30 - 11:30", activity: "Vehicle Pickup: Maui Rental Christchurch, inspect vehicle & check procedures.", transport: "Rental Shuttle / 0 km", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Maui+Motorhome+Rental+Christchurch", mapsLabel: "Maui Christchurch", food: "None", foodUrl: "", tips: "Complete Online Check-in beforehand; inspect freshwater tank, grey valve, and LPG gear.", cat: "DRIVE" },
+          { time: "11:30 - 13:00", activity: "Major grocery shopping: Woolworths Christchurch Airport.", transport: "Campervan / Approx 2 km (4 mins)", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Woolworths+Christchurch+Airport", mapsLabel: "Woolworths CHC Airport", food: "Supermarket Bakery / Roast Chicken", foodUrl: "", tips: "Dedicated large campervan parking spaces available; use passenger spotter when reversing.", cat: "FOOD" },
+          { time: "13:00 - 15:30", activity: "Drive via SH1 & SH79 to Lake Tekapo, passing through Geraldine.", transport: "Campervan / Approx 225 km (2.6h)", stay: "2.5 hours", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=PaknSAVE+Riccarton&destination=Lake+Tekapo&travelmode=driving", mapsLabel: "CHC to Tekapo Route", food: "Barker's Foodstore / Verclause Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Barkers+Foodstore+Geraldine", tips: "SH79 has many curves; pull into Passing Lanes if cars follow closely behind.", cat: "DRIVE" },
+          { time: "15:30 - 16:30", activity: "Visit Church of the Good Shepherd & lakeside playground zip line.", transport: "Campervan / Approx 5 km (5 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=5+Lakeside+Drive+Tekapo", mapsLabel: "Lakeside Playground", food: "Kohan Japanese / Mackenzies Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Kohan+Japanese+Restaurant+Lake+Tekapo", tips: "14:00–16:00 is peak tour bus hour; if crowded, walk lakeside trail first.", cat: "ACTIVITY" },
+          { time: "16:30 - 17:30", activity: "Check-in Lakes Edge Holiday Park, hook up to power (Powered Site).", transport: "Campervan / Approx 2 km (3 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Lakes+Edge+Holiday+Park+Lake+Tekapo", mapsLabel: "Lakes Edge Campground", food: "Camp Self-cooking", foodUrl: "", tips: "Reserving a Lakefront Powered Site lets you enjoy Tekapo sunsets right from your van.", cat: "CAMP" },
+          { time: "18:00 - 20:30", activity: "Campervan self-cooked dinner & rest.", transport: "Parked / 0 km", stay: "2.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Lakes+Edge+Holiday+Park+Lake+Tekapo", mapsLabel: "Lakes Edge Campground", food: "Campervan Meal", foodUrl: "", tips: "October mountain night temps can drop below 5°C; bring thick jackets and warm wear.", cat: "CAMP" },
+          { time: "21:30 - 23:00", activity: "Night Stargazing: Dark Sky Reserve Milky Way viewing near Good Shepherd Church.", transport: "Walking/Driving / Approx 2 km", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Church+of+the+Good+Shepherd+Lake+Tekapo", mapsLabel: "Stargazing Spot", food: "Dark Sky Diner", foodUrl: "https://www.google.com/maps/search/?api=1&query=Dark+Sky+Diner+Lake+Tekapo", tips: "Do not use headlights or bright flashlights; use red light torches to preserve night vision.", cat: "ACTIVITY" }
+        ]
+      },
+      {
+        day: 5,
+        date: "2026/10/21 (Wed)",
+        title: "Mt John Twin Lakes View & Mt Cook Hooker Valley Track",
+        distKm: 120,
+        summary: "Ascend Mt John for mountain coffee, eat glacier salmon at Lake Pukaki, dusk glacier hike.",
+        rows: [
+          { time: "08:30 - 09:30", activity: "Depart camp, drive up to Mount John Observatory.", transport: "Campervan / Approx 15 km (20 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mount+John+Observatory", mapsLabel: "Mount John Observatory", food: "Astro Café", foodUrl: "https://www.google.com/maps/search/?api=1&query=Astro+Cafe+Mount+John", tips: "Summit road toll (~$8 NZD); park campervans in designated large vehicle bays.", cat: "DRIVE" },
+          { time: "09:30 - 11:00", activity: "Coffee at Astro Café & stroll 360-degree loop track overlooking twin lakes.", transport: "Walking / 0 km", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Astro+Cafe+Mount+John", mapsLabel: "Astro Café", food: "Astro Café Coffee & Pastries", foodUrl: "https://www.google.com/maps/search/?api=1&query=Astro+Cafe+Mount+John", tips: "Summit is windy with low wind chill; put on windproof warm jackets before stepping out.", cat: "FOOD" },
+          { time: "11:00 - 12:15", activity: "Drive via SH8 to Mt Cook Alpine Salmon on Lake Pukaki shore.", transport: "Campervan / Approx 50 km (40 mins)", stay: "1.25 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mt+Cook+Alpine+Salmon+Lake+Pukaki", mapsLabel: "Mt Cook Salmon", food: "Mt Cook Alpine Salmon Shop", foodUrl: "https://www.google.com/maps/search/?api=1&query=Mt+Cook+Alpine+Salmon+Lake+Pukaki", tips: "Shop is located right along SH8 with a spacious dedicated campervan parking lot.", cat: "DRIVE" },
+          { time: "12:15 - 13:15", activity: "Lake Pukaki picnic: Fresh-cut alpine glacier salmon sashimi lunch.", transport: "Walking / 0 km", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Peters+Lookout+Lake+Pukaki", mapsLabel: "Peter's Lookout", food: "Alpine Glacier Salmon Sashimi", foodUrl: "https://www.google.com/maps/search/?api=1&query=Mt+Cook+Alpine+Salmon+Lake+Pukaki", tips: "Walk 100 meters down the trail past the shop for an uncrowded milky-blue lake view.", cat: "FOOD" },
+          { time: "13:15 - 14:15", activity: "Drive scenic SH80 into Aoraki Mount Cook National Park.", transport: "Campervan / Approx 55 km (45 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Mt+Cook+Alpine+Salmon&destination=White+Horse+Hill+Campground&travelmode=driving", mapsLabel: "SH80 Scenic Highway", food: "None", foodUrl: "", tips: "SH80 scenery is stunning; never snap photos while driving—pull completely into Lay-bys.", cat: "DRIVE" },
+          { time: "14:15 - 15:30", activity: "Check-in White Horse Hill Campground, gear up for hike.", transport: "Campervan / Approx 5 km (5 mins)", stay: "1.25 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=White+Horse+Hill+Campground+Mount+Cook", mapsLabel: "White Horse Hill Camp", food: "Camp Self-cooked Snack", foodUrl: "", tips: "This is an unpowered DOC campsite requiring advance online booking.", cat: "CAMP" },
+          { time: "15:30 - 19:00", activity: "Highlight Hike: Hooker Valley Track (approx. 10 km round trip, 3 swing bridges).", transport: "Hiking / 10 km round trip", stay: "3.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hooker+Valley+Track+Trailhead", mapsLabel: "Hooker Valley Trailhead", food: "Self-provided Energy Snacks", foodUrl: "", tips: "Departing at 15:30 avoids midday crowds and offers sunset glow on Mt Cook's south face.", cat: "HIKE" },
+          { time: "19:00 - 20:30", activity: "Return to camp, enjoy dinner inside van or DOC cooking shelter.", transport: "Parked / 0 km", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=White+Horse+Hill+Campground+Mount+Cook", mapsLabel: "White Horse Hill Camp", food: "Campervan Cooking", foodUrl: "", tips: "Spring valley sunset is ~19:45–20:00; temps drop fast after dark, keep warm.", cat: "CAMP" }
+        ]
+      },
+      {
+        day: 6,
+        date: "2026/10/22 (Thu)",
+        title: "Tasman Heli Glacier Hike & Drive Scenic Highway to Wanaka",
+        distKm: 215,
+        summary: "Helicopter landing for blue ice glacier hike, cross Lindis Pass scenic road to Wanaka.",
+        rows: [
+          { time: "07:30 - 08:15", activity: "Depart camp for Mt Cook Airport.", transport: "Campervan / Approx 10 km (15 mins)", stay: "45 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mount+Cook+Airport", mapsLabel: "Mount Cook Airport", food: "Camp Simple Breakfast", foodUrl: "", tips: "Wear alpine windproof clothing, sunglasses, and thick socks before check-in.", cat: "DRIVE" },
+          { time: "08:15 - 11:30", activity: "Highlight: Tasman Glacier Heli Hike (Helicopter flight & blue ice hike).", transport: "Heli & Ice Hike", stay: "3.25 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mount+Cook+Airport", mapsLabel: "Heli Hike Check-in", food: "None", foodUrl: "", tips: "Flights are weather-dependent; if cancelled, switch to Tasman Glacier View Track.", cat: "ACTIVITY" },
+          { time: "11:30 - 12:30", activity: "Depart Mt Cook, head south to Twizel town.", transport: "Campervan / Approx 55 km (45 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Mount+Cook+Airport&destination=Twizel&travelmode=driving", mapsLabel: "Mt Cook to Twizel", food: "Poppies Cafe / Mint Folk & Co", foodUrl: "https://www.google.com/maps/search/?api=1&query=Poppies+Cafe+Twizel", tips: "Grab a quick Kiwi hot pie lunch at a local cafe when passing through Twizel.", cat: "DRIVE" },
+          { time: "12:30 - 15:30", activity: "Cross Lindis Pass alpine scenic highway straight to Wanaka.", transport: "Campervan / Approx 150 km (2h)", stay: "3 hours", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Twizel&destination=Wanaka&travelmode=driving", mapsLabel: "Lindis Pass to Wanaka", food: "Lindis Pass Lookout", foodUrl: "https://www.google.com/maps/search/?api=1&query=Lindis+Pass+Viewpoint", tips: "Lindis Pass peak altitude is ~1,000m; use low gear engine braking on continuous turns.", cat: "DRIVE" },
+          { time: "15:30 - 16:30", activity: "Check-in Hampshire Holiday Parks - Wanaka, hook up power.", transport: "Campervan / Approx 5 km (10 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hampshire+Holiday+Parks+Wanaka", mapsLabel: "Hampshire Wanaka", food: "Camp Resupply", foodUrl: "", tips: "Camp is a 10-minute walk to town center and lakefront, extremely convenient.", cat: "CAMP" },
+          { time: "16:30 - 18:30", activity: "Lakeside walk and photo at That Wanaka Tree.", transport: "Walking/Driving / Approx 2 km", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=That+Wanaka+Tree", mapsLabel: "That Wanaka Tree", food: "Pembroke Patisserie / Patagonia", foodUrl: "https://www.google.com/maps/search/?api=1&query=Patagonia+Chocolates+Wanaka", tips: "Late afternoon (17:30–18:30) light shining on the tree and snowy peaks is prime photo time.", cat: "ACTIVITY" },
+          { time: "18:30 - 20:30", activity: "Dinner in Wanaka town & grocery restock at New World Three Parks.", transport: "Walking/Driving / 5 mins", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=New+World+Three+Parks+Wanaka", mapsLabel: "New World Wanaka", food: "Francesca's Italian / Big Fig", foodUrl: "https://www.google.com/maps/search/?api=1&query=Francesca%27s+Italian+Kitchen+Wanaka", tips: "Wanaka has a relaxed vibe; enjoy a drink by the lake after dinner while watching sunset.", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 7,
+        date: "2026/10/23 (Fri)",
+        title: "Wanaka 15,000ft Extreme Skydive & Panoramic Trail Hike",
+        distKm: 25,
+        summary: "Freefall over twin lakes scenery, followed by a panoramic mountain hike in the afternoon.",
+        rows: [
+          { time: "08:00 - 08:30", activity: "Head to Skydive Wanaka Base (located at Wanaka Airport).", transport: "Campervan / Approx 10 km (12 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Skydive+Wanaka", mapsLabel: "Skydive Wanaka", food: "Camp Breakfast", foodUrl: "", tips: "Wear comfortable athletic clothing and lace-up sneakers; jumpsuits provided.", cat: "DRIVE" },
+          { time: "08:30 - 11:30", activity: "Highlight: Skydive Wanaka 15,000ft Tandem Skydive (60s freefall).", transport: "Skydive / 0 km", stay: "3 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Skydive+Wanaka", mapsLabel: "Skydive Wanaka", food: "None", foodUrl: "", tips: "08:30 slot offers calmest air flow and high visibility, leaving afternoon as buffer.", cat: "ACTIVITY" },
+          { time: "11:30 - 13:00", activity: "Return to Wanaka town for celebratory lunch.", transport: "Campervan / Approx 10 km (12 mins)", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Wanaka+Town+Centre", mapsLabel: "Wanaka Town Centre", food: "Kai Whakapai / Big Fig Wanaka", foodUrl: "https://www.google.com/maps/search/?api=1&query=Big+Fig+Wanaka", tips: "Adrenaline crash post-skydive causes tiredness; eat whole food portions and rehydrate.", cat: "FOOD" },
+          { time: "13:00 - 16:00", activity: "Panoramic Hike (Mount Iron Track or Diamond Lake Track).", transport: "Campervan / Approx 5-18 km", stay: "3 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mount+Iron+Track+Wanaka", mapsLabel: "Mount Iron Trailhead", food: "Self-provided Water & Snacks", foodUrl: "", tips: "Mt Iron round trip ~1.5h; Diamond Lake round trip ~2.5h with layered vistas.", cat: "HIKE" },
+          { time: "16:30 - 18:30", activity: "Return to Holiday Park to rest, shower, or lakeside walk.", transport: "Campervan / Approx 5 km (10 mins)", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hampshire+Holiday+Parks+Wanaka", mapsLabel: "Hampshire Wanaka", food: "Camp Afternoon Tea", foodUrl: "", tips: "After back-to-back outdoor activities, this afternoon is ideal for laundry and rest.", cat: "CAMP" },
+          { time: "18:30 - 20:30", activity: "Scenic dinner in Wanaka town.", transport: "Walking/5 mins drive", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Wanaka+Town+Centre", mapsLabel: "Wanaka Town Centre", food: "Francesca's Italian / Bistro Gentil", foodUrl: "https://www.google.com/maps/search/?api=1&query=Francesca%27s+Italian+Kitchen+Wanaka", tips: "Francesca's wood-fired pizza is hugely popular; advance online booking highly advised.", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 8,
+        date: "2026/10/24 (Sat)",
+        title: "Cromwell Fruit Town, Arrowtown Gold History & Queenstown Skyline Luge",
+        distKm: 120,
+        summary: "Avoid mountain roads via smooth SH6, through Cromwell and Arrowtown to Queenstown Luge.",
+        rows: [
+          { time: "08:30 - 09:30", activity: "Depart camp, drive along SH6 scenic highway to Cromwell.", transport: "Campervan / Approx 55 km (45 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Wanaka&destination=Cromwell&travelmode=driving", mapsLabel: "Wanaka to Cromwell", food: "None", foodUrl: "", tips: "SH6 is flat and wide, bypassing steep Crown Range Road; perfect for campervans.", cat: "DRIVE" },
+          { time: "09:30 - 10:30", activity: "Cromwell Giant Fruit Landmark photo & Jones Family Orchard shopping.", transport: "Campervan / Approx 5 km (5 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Jones+Family+Orchard+Cromwell", mapsLabel: "Jones Family Orchard", food: "Fresh Fruit Ice Cream", foodUrl: "https://www.google.com/maps/search/?api=1&query=Jones+Family+Orchard+Cromwell", tips: "Orchard has spacious dedicated parking; buy dried fruits and real fruit ice cream.", cat: "FOOD" },
+          { time: "10:30 - 11:30", activity: "Drive through Kawarau Gorge towards Arrowtown.", transport: "Campervan / Approx 45 km (40 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Cromwell&destination=Arrowtown&travelmode=driving", mapsLabel: "Cromwell to Arrowtown", food: "Kawarau Bridge Bungy", foodUrl: "https://www.google.com/maps/search/?api=1&query=Kawarau+Bridge+Bungy", tips: "Stop briefly at Kawarau Bridge (birthplace of Bungy) on the way; big parking available.", cat: "DRIVE" },
+          { time: "11:30 - 13:30", activity: "Arrowtown Buckingham St stroll & Gold Mining Settlement history.", transport: "Campervan / Approx 10 km (12 mins)", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Buckingham+Street+Arrowtown", mapsLabel: "Arrowtown Buckingham St", food: "Arrowtown Bakery / Provisions", foodUrl: "https://www.google.com/maps/search/?api=1&query=Arrowtown+Bakery", tips: "Saturdays are busy; park campervans at Ramshaw Lane public large vehicle parking area.", cat: "ACTIVITY" },
+          { time: "13:30 - 14:00", activity: "Drive into Queenstown central.", transport: "Campervan / Approx 20 km (25 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Arrowtown&destination=Queenstown&travelmode=driving", mapsLabel: "Arrowtown to Queenstown", food: "None", foodUrl: "", tips: "Weekend traffic in Queenstown is heavy; strictly obey speed limits and watch for pedestrians.", cat: "DRIVE" },
+          { time: "14:00 - 15:00", activity: "Check-in Hampshire Holiday Parks - Queenstown.", transport: "Campervan / Approx 2 km (5 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hampshire+Holiday+Parks+Queenstown", mapsLabel: "Hampshire Queenstown", food: "Camp Setup", foodUrl: "", tips: "Camp is a 5-minute walk to Skyline Gondola; no need to look for parking in CBD.", cat: "CAMP" },
+          { time: "15:00 - 18:00", activity: "Highlight: Skyline Queenstown Gondola & Skyline Luge Rides.", transport: "Walking Round Trip / 0 km", stay: "3 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Skyline+Queenstown", mapsLabel: "Skyline Queenstown", food: "Stratosfare Restaurant", foodUrl: "https://www.google.com/maps/search/?api=1&query=Stratosfare+Restaurant+Queenstown", tips: "Going up at 15:00 avoids noon gondola queues; finish Luge just in time for dusk views.", cat: "ACTIVITY" },
+          { time: "18:00 - 20:30", activity: "Queenstown waterfront stroll & famous dinner.", transport: "Walking Round Trip / 0 km", stay: "2.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Queenstown+Waterfront", mapsLabel: "Queenstown Waterfront", food: "Fergburger / Flame Bar & Grill", foodUrl: "https://www.google.com/maps/search/?api=1&query=Fergburger+Queenstown", tips: "For Fergburger, order online or visit after 20:00 to skip 30-minute queues.", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 9,
+        date: "2026/10/25 (Sun)",
+        title: "Kawarau Bridge Bungy & TSS Earnslaw Steamship BBQ Feast",
+        distKm: 0,
+        summary: "Pilgrimage to world bungy birthplace, evening cruise to Walter Peak for gourmet BBQ.",
+        rows: [
+          { time: "09:30 - 10:00", activity: "Walk to AJ Hackett Station meeting point on Shotover St.", transport: "Walking / Approx 800 m (10 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=AJ+Hackett+Bungy+Queenstown", mapsLabel: "AJ Hackett Station", food: "Vudu Cafe & Larder", foodUrl: "https://www.google.com/maps/search/?api=1&query=Vudu+Cafe+%26+Larder+Queenstown", tips: "Take operator shuttle to Kawarau Bridge (or drive campervan ~25 mins).", cat: "ACTIVITY" },
+          { time: "10:00 - 13:00", activity: "Highlight: Kawarau Bridge Bungy (43m jump, birthplace of commercial bungy).", transport: "Operator Shuttle Round Trip", stay: "3 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Kawarau+Bungy+Centre", mapsLabel: "Kawarau Bungy Base", food: "None", foodUrl: "", tips: "Kawarau Bridge is the only site allowing 'water touch'; purchase official photos/videos after.", cat: "ACTIVITY" },
+          { time: "13:00 - 14:30", activity: "Return to Queenstown CBD for light lunch & shopping.", transport: "Walking Round Trip / 0 km", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Queenstown+Mall", mapsLabel: "Queenstown Mall", food: "Bespoke Kitchen / Patagonia", foodUrl: "https://www.google.com/maps/search/?api=1&query=Patagonia+Chocolates+Queenstown", tips: "With a lavish BBQ feast at 17:00, keep lunch light and simple.", cat: "FOOD" },
+          { time: "14:30 - 16:30", activity: "Return to Holiday Park to rest and recover energy.", transport: "Walking / Approx 800 m (10 mins)", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hampshire+Holiday+Parks+Queenstown", mapsLabel: "Hampshire Queenstown", food: "Camp Rest", foodUrl: "", tips: "Bungy jumping drains adrenaline; taking 1.5–2 hours to relax is key.", cat: "CAMP" },
+          { time: "16:30 - 17:00", activity: "Head to Steamer Wharf for check-in and ticket collection.", transport: "Walking / Approx 800 m (10 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Steamer+Wharf+Queenstown", mapsLabel: "Steamer Wharf Pier", food: "Wharf Bar", foodUrl: "", tips: "Arrive before 16:30 to board early and secure prime outdoor deck seats.", cat: "ACTIVITY" },
+          { time: "17:00 - 21:00", activity: "Highlight: TSS Earnslaw Steamship Cruise & Walter Peak Gourmet BBQ Dinner.", transport: "Steamship Round Trip (45m each way)", stay: "4 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Walter+Peak+High+Country+Farm", mapsLabel: "Walter Peak Farm", food: "Walter Peak Gourmet BBQ", foodUrl: "https://www.google.com/maps/search/?api=1&query=Walter+Peak+High+Country+Farm", tips: "Lake wind on deck is cold—bring windproof jacket; return cruise (20:00–21:00) offers sunset views.", cat: "FOOD" },
+          { time: "21:00 - 21:30", activity: "Return to pier, stroll back to camp.", transport: "Walking / Approx 800 m (10 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hampshire+Holiday+Parks+Queenstown", mapsLabel: "Hampshire Queenstown", food: "None", foodUrl: "", tips: "Nighttime Queenstown waterfront is safe and romantic; enjoy the night view.", cat: "CAMP" }
+        ]
+      },
+      {
+        day: 10,
+        date: "2026/10/26 (Mon)",
+        title: "Glenorchy Red Shed, Queenstown Resupply & Drive to Te Anau",
+        distKm: 270,
+        summary: "Visit LOTR town Glenorchy and the Red Shed, return to Queenstown for major supermarket resupply, and drive to Te Anau.",
+        rows: [
+          { time: "09:30 - 10:30", activity: "Depart camp, drive along Glenorchy-Queenstown Road to Glenorchy.", transport: "Campervan / Approx 45 km (45 mins)", stay: "45 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Glenorchy", mapsLabel: "Glenorchy", food: "Camp Breakfast", foodUrl: "", tips: "Stop briefly at Bennetts Bluff Lookout for photos; campervan parking available.", cat: "DRIVE" },
+          { time: "10:30 - 13:00", activity: "Explore Glenorchy Waterfront, iconic Red Shed, and Lagoon Walk.", transport: "Walking / 5.3 km", stay: "2.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Glenorchy+Shed", mapsLabel: "Glenorchy Red Shed", food: "Mrs Woolly's / Bold Peak Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Mrs+Woollys+General+Store+Glenorchy", tips: "Soft morning light is perfect for photographing the lake and snow-capped mountains from the boardwalk.", cat: "ACTIVITY" },
+          { time: "13:00 - 14:00", activity: "Drive back from Glenorchy to Frankton / Queenstown.", transport: "Campervan / Approx 45 km (45 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Glenorchy&destination=Frankton+Queenstown&travelmode=driving", mapsLabel: "Glenorchy to Frankton", food: "None", foodUrl: "", tips: "Scenic lakefront drive; slow down when approaching Frankton roundabout.", cat: "DRIVE" },
+          { time: "14:00 - 15:00", activity: "Major supermarket resupply at Pak'nSave Queenstown.", transport: "Campervan / Approx 2 km (5 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=PaknSave+Queenstown", mapsLabel: "Pak'nSave Queenstown", food: "Supermarket Deli / Bakery", foodUrl: "", tips: "Stock up on food, water, and snacks before entering Fiordland National Park.", cat: "FOOD" },
+          { time: "15:00 - 17:30", activity: "Drive via SH6 & SH94 to Te Anau, passing Five Rivers.", transport: "Campervan / Approx 170 km (2.5h)", stay: "2.5 hours", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Frankton+Queenstown&destination=Te+Anau&travelmode=driving", mapsLabel: "Queenstown to Te Anau", food: "Five Rivers Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Five+Rivers+Cafe+Southland", tips: "Five Rivers Cafe is an excellent stop to grab a coffee and stretch your legs.", cat: "DRIVE" },
+          { time: "17:30 - 18:00", activity: "Check-in Te Anau TOP 10 Holiday Park & fill full fuel tank.", transport: "Campervan / Approx 5 km (10 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Te+Anau+TOP+10+Holiday+Park", mapsLabel: "Te Anau TOP 10 Camp", food: "Town Gas Station / Supermarket", foodUrl: "", tips: "CRITICAL: Fill fuel tank to 100% tonight! There are no gas stations on the 240km round trip to Milford Sound.", cat: "CAMP" },
+          { time: "18:00 - 20:00", activity: "Lake Te Anau waterfront walk & local specialty dinner.", transport: "Walking / 5 mins drive", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Te+Anau+Town+Centre", mapsLabel: "Te Anau Town Centre", food: "Miles Better Pies / The Fat Duck", foodUrl: "https://www.google.com/maps/search/?api=1&query=Miles+Better+Pies+Te+Anau", tips: "Miles Better Pies is famed for Venison Pie; rest early for tomorrow's Fiordland drive.", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 11,
+        date: "2026/10/27 (Tue)",
+        title: "Milford Sound Scenic Cruise",
+        distKm: 240,
+        summary: "Drive iconic SH94 Milford Road, cruise Milford Sound.",
+        rows: [
+          { time: "07:00 - 08:00", activity: "Early departure along SH94 Milford Road to Fiordland.", transport: "Campervan / Approx 120 km (2h)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Te+Anau&destination=Milford+Sound&travelmode=driving", mapsLabel: "Te Anau to Milford Sound", food: "Camp Self-prepared Breakfast", foodUrl: "", tips: "Homer Tunnel has one-way traffic signals; allow 2.5 hours driving time for campervans.", cat: "DRIVE" },
+          { time: "08:00 - 10:30", activity: "Scenic stops along Milford Road: Mirror Lakes, Eglinton Valley, Monkey Creek.", transport: "Campervan En-route Stops", stay: "2.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mirror+Lakes+Milford+Road", mapsLabel: "Mirror Lakes", food: "Self-provided Hot Drinks", foodUrl: "", tips: "08:00–09:30 is windless at Mirror Lakes for reflection shots before Queenstown tour buses arrive.", cat: "ACTIVITY" },
+          { time: "10:30 - 11:00", activity: "Pass through 1.2km Homer Tunnel into Milford Sound Visitor Center.", transport: "Campervan / Approx 20 km (30 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Milford+Sound+Car+Park", mapsLabel: "Milford Campervan Parking", food: "None", foodUrl: "", tips: "Park in Deep Water Basin campervan parking area, then walk 10 mins to terminal.", cat: "DRIVE" },
+          { time: "11:30 - 13:30", activity: "Highlight: Milford Sound Scenic Cruise.", transport: "Scenic Cruise / 0 km", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Milford+Sound+Visitor+Terminal", mapsLabel: "Milford Sound Terminal", food: "Discover Milford Cafe / Boat Meal", foodUrl: "https://www.google.com/maps/search/?api=1&query=Discover+Milford+Sound+Cafe", tips: "Cruises sail under Stirling Falls for a 'waterfall shower'; wear a waterproof rain jacket.", cat: "ACTIVITY" },
+          { time: "13:30 - 14:30", activity: "Milford Foreshore Walk with iconic Mitre Peak views.", transport: "Hiking / 0 km", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Milford+Sound+Foreshore+Walk", mapsLabel: "Foreshore Walk", food: "Campervan Lunch", foodUrl: "", tips: "The wooden boardwalk is the prime spot for photographing Mitre Peak reflections.", cat: "HIKE" },
+          { time: "14:30 - 17:00", activity: "Relaxed drive back along SH94 to Te Anau.", transport: "Campervan / Approx 120 km (2h)", stay: "2.5 hours", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Milford+Sound&destination=Te+Anau&travelmode=driving", mapsLabel: "Milford to Te Anau Return", food: "The Fat Duck (Te Anau)", foodUrl: "https://www.google.com/maps/search/?api=1&query=The+Fat+Duck+Te+Anau", tips: "Afternoon return traffic is light; pull into Lay-bys whenever trailing cars gather.", cat: "DRIVE" },
+          { time: "17:00 - 18:30", activity: "Return to Te Anau camp to rest & dinner.", transport: "Parked / 0 km", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Te+Anau+TOP+10+Holiday+Park", mapsLabel: "Te Anau TOP 10 Camp", food: "Camp Cooking / Town Restaurant", foodUrl: "", tips: "Get a full night's sleep before starting your long-distance self-drive tour tomorrow.", cat: "CAMP" },
+        ]
+      },
+      {
+        day: 12,
+        date: "2026/10/28 (Wed)",
+        title: "Cross Southern Highway to Scottish Capital Dunedin",
+        distKm: 290,
+        summary: "Cross southern plains to Scottish-heritage Dunedin, visit historic architecture & Tunnel Beach.",
+        rows: [
+          { time: "08:30 - 12:00", activity: "Depart Te Anau via SH94 onto SH1 to Dunedin.", transport: "Campervan / Approx 290 km (3.5h)", stay: "3.5 hours", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Te+Anau&destination=Dunedin&travelmode=driving", mapsLabel: "Te Anau to Dunedin", food: "The Black Dog Kitchen (Gore)", foodUrl: "https://www.google.com/maps/search/?api=1&query=The+Black+Dog+Kitchen+Gore", tips: "Route is flat but long; take rest stops every 1.5 hours at Gore or Balclutha.", cat: "DRIVE" },
+          { time: "12:00 - 13:00", activity: "Arrive Dunedin CBD The Octagon for lunch.", transport: "Campervan / Approx 5 km (10 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=The+Octagon+Dunedin", mapsLabel: "The Octagon Dunedin", food: "Good Good Burgers / Prohibition", foodUrl: "https://www.google.com/maps/search/?api=1&query=Good+Good+Dunedin", tips: "Park campervans at Anzac Avenue pay-parking lot behind Dunedin Railway Station.", cat: "FOOD" },
+          { time: "13:00 - 15:00", activity: "Heritage Tour: Dunedin Railway Station, Otago University Clocktower & Baldwin St.", transport: "City Driving/Walking", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dunedin+Railway+Station", mapsLabel: "Dunedin Railway Station", food: "The Perc Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=The+Perc+Cafe+Dunedin", tips: "When visiting world's steepest street (Baldwin St), park at the bottom—do NOT drive up.", cat: "ACTIVITY" },
+          { time: "15:30 - 17:30", activity: "Visit Tunnel Beach Track & sea cliffs.", transport: "Campervan / Approx 10 km (15 mins)", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Tunnel+Beach+Track", mapsLabel: "Tunnel Beach Trailhead", food: "Starfish Cafe & Bar (St Clair)", foodUrl: "https://www.google.com/maps/search/?api=1&query=Starfish+Cafe+St+Clair", tips: "Track takes ~1 hour round trip with a steep return climb; visit around low tide.", cat: "HIKE" },
+          { time: "17:30 - 18:30", activity: "Check-in Dunedin Holiday Park or nearby campground.", transport: "Campervan / Approx 8 km (15 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dunedin+Holiday+Park", mapsLabel: "Dunedin Holiday Park", food: "Plato Restaurant / Tītī Restaurant", foodUrl: "https://www.google.com/maps/search/?api=1&query=Plato+Dunedin", tips: "Dine at waterfront seafood restaurants near St Clair beach in the evening.", cat: "CAMP" }
+        ]
+      },
+      {
+        day: 13,
+        date: "2026/10/29 (Thu)",
+        title: "Moeraki Boulders, Oamaru Victorian Precinct & Blue Penguins",
+        distKm: 125,
+        summary: "View mysterious Moeraki Boulders, taste paua, explore Oamaru Victorian quarter & Little Blue Penguins.",
+        rows: [
+          { time: "08:30 - 09:30", activity: "Depart camp, drive north along SH1 East Coast highway.", transport: "Campervan / Approx 75 km (1h)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Dunedin&destination=Moeraki+Boulders&travelmode=driving", mapsLabel: "Dunedin to Moeraki", food: "None", foodUrl: "", tips: "SH1 has coastal curves; maintain steady campervan speeds and use Lay-bys.", cat: "DRIVE" },
+          { time: "09:30 - 11:30", activity: "Visit Moeraki Boulders Beach.", transport: "Campervan / Approx 5 km (5 mins)", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Moeraki+Boulders", mapsLabel: "Moeraki Boulders", food: "Moeraki Boulders Cafe", foodUrl: "https://www.google.com/maps/search/?api=1&query=Moeraki+Boulders+Cafe", tips: "Best photos are within 2 hours of low tide; park at Cafe parking and walk 5 mins.", cat: "ACTIVITY" },
+          { time: "11:30 - 12:30", activity: "Lunch: Fleur's Place or Moeraki Boulders Cafe.", transport: "Campervan / Approx 5 km (10 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Fleurs+Place+Moeraki", mapsLabel: "Fleur's Place", food: "Fleur's Place Fresh Wild Paua", foodUrl: "https://www.google.com/maps/search/?api=1&query=Fleurs+Place+Moeraki", tips: "Fleur's Place at the fishing harbor is highly acclaimed (bookings advised).", cat: "FOOD" },
+          { time: "12:30 - 13:30", activity: "Drive north on SH1 to Oamaru.", transport: "Campervan / Approx 40 km (35 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Moeraki+Boulders&destination=Oamaru&travelmode=driving", mapsLabel: "Moeraki to Oamaru", food: "None", foodUrl: "", tips: "Check-in at Oamaru TOP 10 camp first, then enjoy walking through town.", cat: "DRIVE" },
+          { time: "13:30 - 16:30", activity: "Explore Victorian Precinct & Steampunk HQ.", transport: "Town Walking", stay: "3 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Victorian+Precinct+Oamaru", mapsLabel: "Oamaru Victorian Precinct", food: "Cucina Oamaru / Scotts Brewing Co.", foodUrl: "https://www.google.com/maps/search/?api=1&query=Cucina+Oamaru", tips: "NZ's best-preserved Whitestone architecture streetscape; afternoon light is grand.", cat: "ACTIVITY" },
+          { time: "16:30 - 18:30", activity: "Check-in Oamaru TOP 10 Holiday Park, dinner & warm clothes prep.", transport: "Campervan / Approx 2 km (5 mins)", stay: "2 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Oamaru+TOP+10+Holiday+Park", mapsLabel: "Oamaru TOP 10 Camp", food: "Fat Sally's Pub", foodUrl: "https://www.google.com/maps/search/?api=1&query=Fat+Sallys+Pub+Oamaru", tips: "Penguin watching requires sitting outdoors by the sea; wear warm down jackets.", cat: "CAMP" },
+          { time: "18:30 - 21:00", activity: "Highlight: Oamaru Blue Penguin Colony Evening Viewing.", transport: "Campervan / Approx 3 km (8 mins)", stay: "2.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Oamaru+Blue+Penguin+Colony", mapsLabel: "Oamaru Penguin Colony", food: "None", foodUrl: "", tips: "Book Evening Viewing tickets in advance; strictly NO photography or filming allowed.", cat: "ACTIVITY" }
+        ]
+      },
+      {
+        day: 14,
+        date: "2026/10/30 (Fri)",
+        title: "Dump Station Maintenance, Return Campervan & Check-in Airport Hotel",
+        distKm: 260,
+        summary: "Empty black/grey water tanks, refill fuel/LPG, return vehicle in Christchurch, stay at Novotel.",
+        rows: [
+          { time: "08:30 - 09:30", activity: "Camp dump station maintenance (dump grey/black water, fill freshwater).", transport: "Parked / 0 km", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Oamaru+TOP+10+Holiday+Park", mapsLabel: "Oamaru Dump Station", food: "Camp Self-prepared Breakfast", foodUrl: "", tips: "Using Holiday Park dump stations is clean and hygienic, saving hassle on the road.", cat: "CAMP" },
+          { time: "09:30 - 13:00", activity: "Drive north along SH1 highway back to Christchurch.", transport: "Campervan / Approx 250 km (3.25h)", stay: "3.5 hours", mapsUrl: "https://www.google.com/maps/dir/?api=1&origin=Oamaru&destination=Christchurch&travelmode=driving", mapsLabel: "Oamaru to Christchurch", food: "Salmon Tales Cafe (Rakaia)", foodUrl: "https://www.google.com/maps/search/?api=1&query=Salmon+Tales+Cafe+Rakaia", tips: "SH1 is smooth; note speed limit drops to 50 km/h when passing Ashburton town.", cat: "DRIVE" },
+          { time: "13:00 - 14:00", activity: "Final prep at airport area: Full tank Diesel & LPG refill.", transport: "Campervan / Approx 10 km (15 mins)", stay: "1 hour", mapsUrl: "https://www.google.com/maps/search/?api=1&query=BP+Connect+Christchurch+Airport", mapsLabel: "BP Airport (Refill Fuel/LPG)", food: "Convenience Store Snack", foodUrl: "", tips: "Refill diesel and LPG full tank before returning vehicle and KEEP RECEIPTS.", cat: "DRIVE" },
+          { time: "14:00 - 15:30", activity: "Return Campervan: Maui Rental Christchurch.", transport: "Campervan / Approx 3 km (5 mins)", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Maui+Motorhome+Rental+Christchurch", mapsLabel: "Maui Christchurch", food: "None", foodUrl: "", tips: "Return keys, power cable, and water hose; report vehicle status for swift processing.", cat: "DRIVE" },
+          { time: "15:30 - 16:00", activity: "Check-in Airport Hotel (Novotel Christchurch Airport or Sudima).", transport: "Shuttle/Walk / Approx 1 km", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Novotel+Christchurch+Airport", mapsLabel: "Novotel Airport Hotel", food: "None", foodUrl: "", tips: "Drop luggage in room, concluding 10+ days of self-driving duty to fully unwind.", cat: "CAMP" },
+          { time: "16:00 - 18:30", activity: "Free walk or visit International Antarctic Centre.", transport: "Walking Round Trip / 0 km", stay: "2.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=International+Antarctic+Centre", mapsLabel: "Antarctic Centre", food: "Spitfire Square Dining", foodUrl: "https://www.google.com/maps/search/?api=1&query=Spitfire+Square+Christchurch", tips: "Visit Countdown at Spitfire Square nearby for last-minute souvenir shopping.", cat: "ACTIVITY" },
+          { time: "18:30 - 21:00", activity: "Celebration dinner & pack checked luggage.", transport: "Walking / 0 km", stay: "2.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Spitfire+Square+Christchurch", mapsLabel: "Spitfire Square", food: "The Food Exchange / Lone Star", foodUrl: "https://www.google.com/maps/search/?api=1&query=Lone+Star+Spitfire+Square", tips: "Pack liquids and knives into checked bags, rest early for tomorrow's departure flight.", cat: "FOOD" }
+        ]
+      },
+      {
+        day: 15,
+        date: "2026/10/31 (Sat)",
+        title: "Christchurch Departure Flight (Melbourne Transit) Back to Hong Kong",
+        distKm: 0,
+        summary: "Early departure check-in, transit via Melbourne, safely return to HKG to wrap up South Island tour.",
+        rows: [
+          { time: "03:30 - 04:00", activity: "Early wake up & Hotel Check-out.", transport: "Walking / 0 km", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Novotel+Christchurch+Airport", mapsLabel: "Novotel Airport Hotel", food: "None", foodUrl: "", tips: "Guests staying at Novotel can walk 2 minutes directly into the departure terminal.", cat: "FLIGHT" },
+          { time: "04:00 - 04:30", activity: "Christchurch Airport (CHC) Qantas counter QF168 check-in & luggage through-check.", transport: "Walking / Approx 200 m (2 mins)", stay: "30 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Airport+Departures", mapsLabel: "CHC Airport Departures", food: "Airport Cafe", foodUrl: "", tips: "Confirm with counter staff that baggage tags are printed through to HKG.", cat: "FLIGHT" },
+          { time: "04:30 - 06:05", activity: "Security check and exit customs.", transport: "Walking / 0 km", stay: "1.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Christchurch+Airport+Departures", mapsLabel: "CHC Airport Airside", food: "Qantas Lounge / Airport Dining", foodUrl: "", tips: "Some shops are closed early in the morning; relax in lounge or boarding area.", cat: "FLIGHT" },
+          { time: "06:05 - 08:00", activity: "QF168: Christchurch to Melbourne (MEL, flight time approx. 3 hrs 55 mins).", transport: "In Flight / 0 km", stay: "3.91 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+MEL", mapsLabel: "Melbourne Airport MEL", food: "In-flight Breakfast", foodUrl: "", tips: "NZ and Melbourne have a 2-hour time difference (Daylight Savings); arrive MEL at 08:00.", cat: "FLIGHT" },
+          { time: "08:00 - 11:05", activity: "Melbourne Airport (MEL) T2 Transit (~3 hours layover).", transport: "Transit Walking / 0 km", stay: "3.08 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+Terminal+2", mapsLabel: "Melbourne T2 Transit", food: "Brunetti Classico / Axil Coffee", foodUrl: "https://www.google.com/maps/search/?api=1&query=Brunetti+Melbourne+Airport", tips: "Same Qantas int'l terminal T2; no need to clear border or collect bags; enjoy coffee.", cat: "FLIGHT" },
+          { time: "11:05 - 17:35", activity: "QF29: Melbourne to Hong Kong (HKG, flight time approx. 9 hrs 30 mins).", transport: "In Flight / 0 km", stay: "9.5 hours", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport", mapsLabel: "Hong Kong Int'l Airport", food: "In-flight Meals", foodUrl: "", tips: "Set watch/phone back to HK time (3 hours behind Melbourne).", cat: "FLIGHT" },
+          { time: "17:35", activity: "Safe arrival at Hong Kong International Airport (HKG), collect luggage & head home.", transport: "Walking & Transit", stay: "0 mins", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Arrivals", mapsLabel: "HKG Airport Arrivals", food: "None", foodUrl: "", tips: "Arriving early evening, perfect timing to get home for dinner and wrap up your 15-day journey!", cat: "FLIGHT" }
+        ]
+      }
+    ];
+
+    // --- 2. GOURMET HIGHLIGHTS DATA ---
+    const GOURMET_DATA = [
+      { name: "Kohan Japanese Restaurant", loc: "Lake Tekapo", desc: "Famous lake-view Japanese restaurant featuring salmon bowls and teishoku sets facing azure waters.", tag: "Japanese Lakeview", link: "https://www.google.com/maps/search/?api=1&query=Kohan+Japanese+Restaurant+Lake+Tekapo" },
+      { name: "Mt Cook Alpine Salmon Shop", loc: "Lake Pukaki", desc: "Located on the shore of the glacial milky-blue lake, offering fresh-cut alpine glacier salmon sashimi.", tag: "Glacier Salmon", link: "https://www.google.com/maps/search/?api=1&query=Mt+Cook+Alpine+Salmon+Lake+Pukaki" },
+      { name: "Astro Café", loc: "Mount John Summit", desc: "Rated a world-class scenic cafe, offering 360-degree views overlooking Lake Tekapo and Lake Alexandrina.", tag: "Summit Cafe", link: "https://www.google.com/maps/search/?api=1&query=Astro+Cafe+Mount+John" },
+      { name: "Francesca's Italian Kitchen", loc: "Wanaka", desc: "Acclaimed wood-fired pizza and handmade pasta with lively atmosphere; reserve 2 weeks early.", tag: "Wood-fired Italian", link: "https://www.google.com/maps/search/?api=1&query=Francesca%27s+Italian+Kitchen+Wanaka" },
+      { name: "Fergburger", loc: "Queenstown", desc: "New Zealand's legendary giant burgers, juicy and bursting with flavor; try the Venison or Prime Beef.", tag: "Legendary Burger", link: "https://www.google.com/maps/search/?api=1&query=Fergburger+Queenstown" },
+      { name: "Walter Peak Gourmet BBQ", loc: "Queenstown", desc: "Cruise across Lake Wakatipu on century-old TSS Earnslaw for a premium BBQ feast at high-country farm.", tag: "Steamship BBQ", link: "https://www.google.com/maps/search/?api=1&query=Walter+Peak+High+Country+Farm" },
+      { name: "Miles Better Pies", loc: "Te Anau", desc: "Top-rated local Kiwi pie shop, particularly praised for Venison Pie and Seafood Pie.", tag: "Specialty Pies", link: "https://www.google.com/maps/search/?api=1&query=Miles+Better+Pies+Te+Anau" },
+      { name: "Fleur's Place", loc: "Moeraki", desc: "Wharfside iconic restaurant highlighting daily fresh-caught local seafood and wild black-foot paua.", tag: "Wharf Seafood", link: "https://www.google.com/maps/search/?api=1&query=Fleurs+Place+Moeraki" }
+    ];
+
+    // --- 3. CHECKLIST DATA ---
+    const CHECKLIST_ITEMS = [
+      { id: "c1", text: "Download Google Maps NZ South Island full offline map" },
+      { id: "c2", text: "Complete NZTD Arrival Declaration App / Card in advance" },
+      { id: "c3", text: "Ensure hiking boot soles are clean & dirt-free for bio-security" },
+      { id: "c4", text: "Complete Maui Campervan Online Check-in to save time at depot" },
+      { id: "c5", text: "Book White Horse Hill (Cook) DOC unpowered campsite" },
+      { id: "c6", text: "Book TSS Earnslaw Steamship & Walter Peak Dinner" },
+      { id: "c7", text: "Book Oamaru Blue Penguin Colony Evening Viewing tickets" },
+      { id: "c8", text: "Refill campervan diesel full tank in Te Anau before Milford Sound" },
+      { id: "c9", text: "Prepare campervan USB adapters and 230V extension cord" },
+      { id: "c10", text: "Day 14 vehicle return: Refill Diesel + LPG gas and keep receipts" }
+    ];
+
+    // --- STATE MANAGEMENT ---
+    let activeDay = 1;
+    let activeCategory = 'ALL';
+    let searchQuery = '';
+
+    // --- INITIALIZATION ---
+    document.addEventListener("DOMContentLoaded", () => {
+      renderDayButtons();
+      renderSchedule();
+      renderCharts();
+      renderGourmetGrid();
+      renderChecklist();
+
+      // Search event
+      document.getElementById('itinerarySearch').addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        renderSchedule();
+      });
+    });
+
+    // --- RENDER DAY BUTTONS ---
+    function renderDayButtons() {
+      const container = document.getElementById('dayButtonsContainer');
+      container.innerHTML = ITINERARY_DATA.map(d => `
+        <button onclick="switchDay(${d.day})" id="dayBtn-${d.day}" 
+                class="day-btn text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-lg border whitespace-nowrap transition-all ${d.day === activeDay ? 'bg-emerald-800 text-white border-emerald-800 shadow-sm' : 'bg-white text-stone-700 border-stone-300 hover:bg-stone-100'}">
+          D${d.day} (${d.date.split(' ')[0].split('/')[1]}/${d.date.split(' ')[0].split('/')[2]})
+        </button>
+      `).join('');
+    }
+
+    // --- SWITCH DAY ---
+    function switchDay(day) {
+      activeDay = day;
+      document.querySelectorAll('.day-btn').forEach(btn => {
+        btn.classList.remove('bg-emerald-800', 'text-white', 'border-emerald-800', 'shadow-sm');
+        btn.classList.add('bg-white', 'text-stone-700', 'border-stone-300');
+      });
+      const currentBtn = document.getElementById(`dayBtn-${day}`);
+      if (currentBtn) {
+        currentBtn.classList.remove('bg-white', 'text-stone-700', 'border-stone-300');
+        currentBtn.classList.add('bg-emerald-800', 'text-white', 'border-emerald-800', 'shadow-sm');
+      }
+      renderSchedule();
+    }
+
+    // --- FILTER CATEGORY ---
+    function filterCategory(cat) {
+      activeCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-emerald-800', 'text-white');
+        btn.classList.add('bg-stone-200', 'text-stone-700');
+      });
+      event.target.classList.remove('bg-stone-200', 'text-stone-700');
+      event.target.classList.add('active', 'bg-emerald-800', 'text-white');
+      renderSchedule();
+    }
+
+    // --- RENDER SCHEDULE TABLE ---
+    function renderSchedule() {
+      const dayData = ITINERARY_DATA.find(d => d.day === activeDay);
+      const summaryCard = document.getElementById('daySummaryCard');
+      const tableBody = document.getElementById('scheduleTableBody');
+
+      if (!dayData) return;
+
+      // Update Summary Card
+      summaryCard.innerHTML = `
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="bg-emerald-800 text-white text-xs font-bold px-2 py-0.5 rounded">Day ${dayData.day}</span>
+            <span class="text-xs text-stone-600 font-semibold">${dayData.date}</span>
+          </div>
+          <h3 class="text-lg font-bold text-stone-900 mt-1">${dayData.title}</h3>
+          <p class="text-xs text-stone-600 mt-0.5">${dayData.summary}</p>
+        </div>
+        <div class="text-right sm:text-right flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto border-t sm:border-t-0 border-emerald-200 pt-2 sm:pt-0">
+          <span class="text-xs text-stone-500 font-medium">Est. Daily Drive</span>
+          <span class="text-base font-extrabold text-emerald-900">${dayData.distKm} km</span>
+        </div>
+      `;
+
+      // Filter rows
+      let rows = dayData.rows;
+
+      if (activeCategory !== 'ALL') {
+        rows = rows.filter(r => r.cat === activeCategory);
+      }
+
+      if (searchQuery) {
+        rows = rows.filter(r => 
+          r.activity.toLowerCase().includes(searchQuery) ||
+          r.food.toLowerCase().includes(searchQuery) ||
+          r.tips.toLowerCase().includes(searchQuery) ||
+          r.mapsLabel.toLowerCase().includes(searchQuery)
+        );
+      }
+
+      if (rows.length === 0) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="7" class="py-8 text-center text-stone-400">
+              🔍 No matching items found (Try switching days or clearing search keywords)
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tableBody.innerHTML = rows.map(r => {
+        let badgeStyle = "bg-stone-100 text-stone-700";
+        if (r.cat === 'DRIVE') badgeStyle = "bg-blue-50 text-blue-800 border border-blue-200";
+        if (r.cat === 'HIKE') badgeStyle = "bg-emerald-50 text-emerald-800 border border-emerald-200";
+        if (r.cat === 'ACTIVITY') badgeStyle = "bg-amber-50 text-amber-800 border border-amber-200";
+        if (r.cat === 'FOOD') badgeStyle = "bg-rose-50 text-rose-800 border border-rose-200";
+        if (r.cat === 'CAMP') badgeStyle = "bg-purple-50 text-purple-800 border border-purple-200";
+
+        let foodContent = r.food;
+        if (r.foodUrl) {
+          foodContent = `<a href="${r.foodUrl}" target="_blank" rel="noopener noreferrer" class="text-emerald-800 font-medium hover:underline flex items-center gap-1">${r.food} ↗</a>`;
+        }
+
+        return `
+          <tr class="hover:bg-stone-50/80 transition text-stone-800">
+            <td class="py-3 px-4 font-mono text-xs font-bold text-stone-600 whitespace-nowrap">${r.time}</td>
+            <td class="py-3 px-4 font-medium text-stone-900">${r.activity}</td>
+            <td class="py-3 px-4 text-xs text-stone-600">${r.transport}</td>
+            <td class="py-3 px-4 text-xs font-semibold text-emerald-900">${r.stay}</td>
+            <td class="py-3 px-4">
+              <a href="${r.mapsUrl}" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center px-2.5 py-1 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded shadow-xs transition">
+                📍 ${r.mapsLabel} ↗
+              </a>
+            </td>
+            <td class="py-3 px-4 text-xs text-stone-700">${foodContent}</td>
+            <td class="py-3 px-4 text-xs text-stone-500 leading-snug">${r.tips}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // --- 4. RENDER CHARTS ---
+    function renderCharts() {
+      // Distance Chart
+      const distCtx = document.getElementById('distanceChart').getContext('2d');
+      const dayLabels = ITINERARY_DATA.map(d => `D${d.day}`);
+      const distData = ITINERARY_DATA.map(d => d.distKm);
+
+      new Chart(distCtx, {
+        type: 'bar',
+        data: {
+          labels: dayLabels,
+          datasets: [{
+            label: 'Daily Distance (km)',
+            data: distData,
+            backgroundColor: '#0F5132',
+            borderRadius: 6,
+            hoverBackgroundColor: '#D97706'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: '#f1f5f9' },
+              ticks: { font: { size: 11 } }
+            },
+            x: {
+              grid: { display: false },
+              ticks: { font: { size: 11 } }
+            }
+          }
+        }
+      });
+
+      // Activity Chart
+      const actCtx = document.getElementById('activityChart').getContext('2d');
+      new Chart(actCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Drive & Transport', 'Hiking Trails', 'Key Activities', 'Dining & Supply', 'Campsite & Flight'],
+          datasets: [{
+            data: [28, 22, 25, 15, 10],
+            backgroundColor: ['#1e40af', '#047857', '#d97706', '#be123c', '#6b21a8']
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { font: { size: 11 }, boxWidth: 12 }
+            }
+          }
+        }
+      });
+    }
+
+    // --- 5. STRATEGY TAB SWITCHER ---
+    function switchStrategyTab(tabKey) {
+      document.querySelectorAll('.strat-tab').forEach(tab => {
+        tab.classList.remove('border-emerald-800', 'text-emerald-900', 'bg-emerald-50');
+        tab.classList.add('border-transparent', 'text-stone-600');
+      });
+      document.querySelectorAll('.strat-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      const activeTab = document.getElementById(`tab-${tabKey}`);
+      const activeContent = document.getElementById(`strat-content-${tabKey}`);
+
+      if (activeTab && activeContent) {
+        activeTab.classList.remove('border-transparent', 'text-stone-600');
+        activeTab.classList.add('border-emerald-800', 'text-emerald-900', 'bg-emerald-50');
+        activeContent.classList.remove('hidden');
+      }
+    }
+
+    // --- 6. RENDER GOURMET GRID ---
+    function renderGourmetGrid() {
+      const container = document.getElementById('gourmetGrid');
+      container.innerHTML = GOURMET_DATA.map(g => `
+        <div class="bg-white border border-stone-200 rounded-xl p-4 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">${g.tag}</span>
+              <span class="text-xs text-stone-400 font-medium">${g.loc}</span>
+            </div>
+            <h3 class="text-base font-bold text-stone-900">${g.name}</h3>
+            <p class="text-xs text-stone-600 mt-1.5 leading-relaxed">${g.desc}</p>
+          </div>
+          <a href="${g.link}" target="_blank" rel="noopener noreferrer" 
+             class="mt-4 inline-flex items-center justify-center w-full py-1.5 bg-stone-100 hover:bg-emerald-800 hover:text-white text-stone-700 text-xs font-semibold rounded transition">
+            📍 Google Maps Directions ↗
+          </a>
+        </div>
+      `).join('');
+    }
+
+    // --- 7. RENDER CHECKLIST ---
+    function renderChecklist() {
+      const container = document.getElementById('checklistItemsContainer');
+      const savedState = JSON.parse(localStorage.getItem('nz_campervan_checklist') || '{}');
+
+      container.innerHTML = CHECKLIST_ITEMS.map(item => {
+        const isChecked = savedState[item.id] || false;
+        return `
+          <label class="flex items-start space-x-3 p-3 rounded-lg border border-stone-200 hover:bg-stone-50 cursor-pointer transition">
+            <input type="checkbox" id="${item.id}" ${isChecked ? 'checked' : ''} onchange="toggleCheckItem('${item.id}')" 
+                   class="mt-0.5 h-4 w-4 text-emerald-800 rounded border-stone-300 focus:ring-emerald-700">
+            <span class="text-xs font-medium text-stone-700 leading-snug ${isChecked ? 'line-through text-stone-400' : ''}">${item.text}</span>
+          </label>
+        `;
+      }).join('');
+
+      updateChecklistProgress();
+    }
+
+    function toggleCheckItem(id) {
+      const savedState = JSON.parse(localStorage.getItem('nz_campervan_checklist') || '{}');
+      const checkbox = document.getElementById(id);
+      savedState[id] = checkbox.checked;
+      localStorage.setItem('nz_campervan_checklist', JSON.stringify(savedState));
+      
+      renderChecklist();
+    }
+
+    function updateChecklistProgress() {
+      const savedState = JSON.parse(localStorage.getItem('nz_campervan_checklist') || '{}');
+      const total = CHECKLIST_ITEMS.length;
+      const completed = Object.values(savedState).filter(Boolean).length;
+      const pct = Math.round((completed / total) * 100);
+
+      document.getElementById('checklistProgressText').innerText = `${pct}% (${completed}/${total})`;
+      document.getElementById('checklistProgressBar').style.width = `${pct}%`;
+    }
+  </script>
+</body>
+</html>
