@@ -781,9 +781,8 @@
           datasets: [{
             label: 'Daily Distance (km)',
             data: distData,
-            backgroundColor: '#0F5132',
-            borderRadius: 6,
-            hoverBackgroundColor: '#D97706'
+            backgroundColor: distData.map(v => v > 200 ? '#b91c1c' : (v > 100 ? '#059669' : '#a8a29e')),
+            borderRadius: 4,
           }]
         },
         options: {
